@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>The Story of Art</title><meta name="keywords" content="Emma, Kay, art, history, projection"><meta name="author" content="Mr.  Peter Edwards"><meta name="author" content="Mr. Peter Moore"><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><meta content="text/css" http-equiv="Content-Style-Type"><style type="text/css">
+ul.simple {list-style-type: none}
+ul.bulleted {list-style-type: disc}
+ul.openBulleted {list-style-type: circle}
+ul.dashed {list-style-type: square}
+ol.arabic {list-style-type: decimal}
+ol.ualpha {list-style-type: upper-alpha}
+ol.uroman {list-style-type: upper-roman}
+ol.lalpha {list-style-type: lower-alpha}
+ol.lroman {list-style-type: lower-roman}
+ol.ftnote {list-style-type: decimal}
+    </style><link href="images/ideadb.css" type="text/css" rel="stylesheet"></head>
+<body><h1 class="title">The Story of Art</h1><h2 class="subt">For the SVG Open 2005 conference</h2><p class="keyword"><i class="keywordHeader">Keywords: </i><a title="Emma" id="K1.Emma">Emma, </a><a title="Kay" id="K2.Kay">Kay, </a><a title="art" id="K3.art">art, </a><a title="history" id="K4.history">history, </a><a title="projection" id="K5.projection">projection</a></p><p class="author"><span class="authorName"><a title="projection" id="K5.projection">Mr.  Peter Edwards</a></span><a title="projection" id="K5.projection"><br>Director<br></a><a href="http://e-2.org/">e-2.org limited</a><br>
+					64a Regent Studios, 8 Andrews Road
+					<br>London
+					<br>United Kingdom
+					<br><a href="mailto:tech@e-2.org" class="email">tech@e-2.org</a>
+				</p><p class="bioHeader"><i>Biography</i></p><blockquote class="bio"><p>Peter
+Edwards is co-director of e-2.org limited, a digital arts organisation
+based in London, U.K.
+Peter graduated in 1988 from Leicester University with a BSc (Hons)
+Chemistry degree (2[ii]), worked in the merchant navy for 2 years
+followed by jobs as a milliner, music journalist and postal worker
+before becoming a librarian.
+After receiving a Postgraduate qualification in Library and Information
+Science in 1997, he left libraries in 1999 to pursue a career as a
+computer programmer. Interests include contemporary music, art,
+cookery, 20th/21st century literature. Peter has two children with his
+partner, the artist Sally Barker, and lives in East London.</p></blockquote><p class="author"><span class="authorName">Mr. Peter Moore</span><br>Director<br><a href="http://e-2.org/">e-2.org limited</a><br>
+					64a Regent Studios, 8 Andrews Road
+					<br>London
+					<br>United Kingdom
+					<br><a href="mailto:peter@e-2.org" class="email">peter@e-2.org</a>
+				</p><p class="bioHeader"><i>Biography</i></p><blockquote class="bio"><p>Peter
+Moore is co-director of e-2.org limited, a digital arts organisation
+based in London, UK.
+Peter began his involvement with the Internet with the first web site
+for Greenpeace International in 1995. This involved supporting the high
+profile campaigns of the time, among them the dumping of the Brent Spar
+oil platform, and the Mururoa Atoll nuclear test. This was followed by
+work as producer on The Economist Newspaper web site (1998-2000).
+Containership (<a href="http://www.c-ship.org/">http://www.c-ship.org/</a>)
+was Peter's first collaboration with artists to produce work
+specifically for Internet exhibition. This led to the formation of e-2 (<a href="http://e-2.org/">http://e-2.org/</a>)
+as a digital arts company. A series of digital and Internet based art
+commissions, funded by the Arts Council of England, followed
+(2000-current). Since 2001, e-2 has also been engaged as web
+consultants for clients including The Royal Academy of Arts, and the
+Tate Gallery, London. Peter lives in London with his partner and three
+children.</p></blockquote><hr class="upperBorder"><h2 class="abstractHeader">Abstract</h2><hr class="lowerBorder"><div class="abstract"><p>In
+February 2004, Dean Jackson was on his first visit to London. Naturally
+he took the opportunity to visit one of the most popular and successful
+modern art galleries in the world, Tate Modern. Strolling through the
+galleries on the fifth floor, he came across 'The Story of Art' - a
+25'x15' projection of animated text by artist Emma Kay - and thought
+"Cool! You could do that in SVG!"</p><p>As Dean said afterwards, "I was
+really surprised and impressed to find out later that it had been done
+in SVG". It was a nice welcome to London for Dean and a great
+compliment for e-2, who made the piece with Emma.</p><p>This paper will
+discuss how the work came about, the choice of SVG, the way the piece
+was made, the lessons learnt for artist and production team and what
+the future implications and plans for the project are.</p><p>Emma Kay's
+practice involves the reconstruction of epic historical, geographical
+or fictional stories entirely from memory. One of her purposes is to
+provide a springboard for the viewer's exploration of their own memory
+and knowledge. </p><p>In a previous commission from the Chisenhale
+Gallery - "The Future from Memory" - Emma worked with e-2 to produce a
+projection of animated text, realised using Macromedia Flash and Swift
+3D software. During the course of production, it became obvious that
+editing the piece would be very difficult, as the addition of a small
+piece of text would necessitate rendering it to a 3D vector file,
+importing it into Flash, and its insertion within the desired frames of
+the sequence. One of the key motivations behind using SVG for "The
+Story of Art" was that the editing process could be carried out on text
+files, and the conversion into the finished animation could be
+performed in a single step. Another was the quality of the text
+rendition when projected on a large scale. Video was initially
+discussed as a possibility, but the quality issue, together with costs
+of editing and re-editing, encouraged us to use SVG.</p><p>The Story of
+Art consists of a series of sentences, wrapped to form short
+paragraphs, which appear to travel towards the viewer from a vanishing
+point just above the centre of the screen. The text rests in the centre
+of the screen briefly, before accelerating past the viewer either to
+the top or bottom of the viewport. The animation begins slowly,
+accelerating imperceptibly over the duration of the piece (9 hours, 45
+minutes) to reach speeds where only the occasional word is decipherable
+towards the end. While in the Tate, the piece looped continuously for
+11 months.</p><p>SVG proved to be invaluable during the fine-tuning
+process of determining the speed, acceleration, path and scaling of the
+text. The animation was carried out using SMIL animation elements, and
+formatting carried out using ECMAScript. The spline features of SVG
+were particularly useful in controlling and synchronising the
+acceleration along the animation path and scaling of the text.</p><p>We
+experienced initial problems in the processing required to format such
+a large amount of text (over 120,000 words, 7-8Mb), which took over 3
+minutes on the hardware purchased for the project (2.8GHz Xeon
+processor with 1Gb RAM). Also, once the file had loaded into Adobe's
+SVG Viewer, the processing power required to keep the document in
+memory (typically 30-35% of the machine's capacity) detracted from the
+processing power required to perform the animation sequences (which
+invariably peaked at 100%), resulting in "dropped frames" at higher
+speeds. This was solved by splitting the text at logical points into a
+series of 101 separate files, and "daisy-chaining" them together using
+the getURL() function.</p><p>From our previous experience of working
+with the artist, we knew that the development of the text would
+accelerate closer to the launch date, and that last minute editing of
+the text would inevitably be needed, so it became crucially important
+to build a tool which could automate the production. A tool was
+developed using PHP to import text into a MySQL database, manipulate
+the text and animation parameters, and finally export the text as a
+series of SVG files.</p><p>The experience has heightened the awareness
+of SVG as a creative medium among artists and arts institutions. The
+Story of Art will continue to do so as it traverses the galleries of
+the world.</p><p>SVG has the potential to extend and enrich artistic
+practice. In the case of Emma Kay this may mean extending her reach to
+explore "collective memory" in her work by encouraging participation
+via the internet.</p><p>The Story of Art is currently showing at the PowerPlant gallery at the Harbourfront Centre in Toronto (<a href="http://www.thepowerplant.org/">http://www.thepowerplant.org/</a>).</p></div><hr class="upperBorder"><h2 class="tocHeader">Table of Contents</h2><hr class="lowerBorder"><p class="toc"><b><a href="#S1.">1. Emma Kay</a></b><br><b><a href="#S2.">2. Using SVG</a></b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S2.1">2.1 The choice of SVG</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S2.2">2.2 Requirements</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S2.3">2.3 Approach</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S2.4">2.4 How it works</a><br><b><a href="#S3.">3. Building The Story of Art</a></b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.1">3.1 Production</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.2">3.2 Testing</a><br><b><a href="#S4.">4. Conclusion</a></b><br><b><a href="#S.Acknowledgements">Acknowledgements</a></b><br><b><a href="#S.Bibliography">Bibliography</a></b><br></p><h2><a id="Section_1"></a><a id="S1.">1. Emma Kay</a></h2><p>Emma
+Kay's practice involves the reconstruction of epic historical,
+geographical or fictional stories entirely from memory. One of her
+purposes is to provide a springboard for the viewer's exploration of
+their own memory and knowledge. Examples of her previous pieces of work
+include "The Bible from Memory" [1997], "Shakespeare from Memory"
+[1998], and "Worldview" [1999], where she wrote her own version of
+texts or events without recourse to original or reference material,
+relying solely on personal memory.</p><p>In a previous commission from
+the Chisenhale Gallery - "The Future from Memory" [2000] - Emma worked
+with e-2 to produce a projection of animated text, realised using
+Macromedia Flash and Swift 3D software.</p><h2><a id="Section_2"></a><a id="S2.">2. Using SVG</a></h2><h3><a id="Section_2_1"></a><a id="S2.1">2.1 The choice of SVG</a></h3><p>During
+the production of "The Future from Memory", it became obvious that
+editing the piece would be very difficult, as the addition of a small
+piece of text would necessitate rendering it to a 3D vector file,
+importing it into Flash, and its insertion within the desired frames of
+the sequence. One of the key motivations behind using SVG for "The
+Story of Art" was that the editing process could be carried out on text
+files, and the conversion into the finished animation could be
+performed in a single step. Another was the quality of the text
+rendition when projected on a large scale. Video was initially
+discussed as a possibility, but the quality issue, together with costs
+of editing and re-editing, encouraged us to use SVG.</p><h3><a id="Section_2_2"></a><a id="S2.2">2.2 Requirements</a></h3><p>The
+Story of Art was planned to be an animated text piece along the same
+lines as "The Future From Memory", but where the text, instead of
+scrolling up the screen into the distance (Start Wars style), appeared
+from a vanishing point and grew larger as though it were travelling
+toward the viewer. Each piece of text had to be justified in small
+paragraphs. The speed and frequency of the text needed to increase
+imperceptibly over the course of the piece, up to a point near the end
+where the text would be travelling so fast it would be unreadable - the
+start was to be extremely slow, with sentences taking almost a minute
+to complete their "approach".</p><h3><a id="Section_2_3"></a><a id="S2.3">2.3 Approach</a></h3><p>The
+first thing we noticed in our research on SVG was a lack of support for
+text wrapping, which was neccessary to achieve the effects which were
+desired. The solution was found in Antoine Quint's article (<a href="http://www.xml.com/pub/a/2002/09/11/quint.html">http://www.xml.com/pub/a/2002/09/11/quint.html</a>)
+which uses a custom tag/namespace for text elements to allow for their
+reformatting as a series of tspan elements to achieve text wrapping.
+The script which is used in the article was modified slightly for the
+purposes of the piece (as the text moved and scaled at the same time
+during the animation, all measurements in the script needed to be
+converted to relative units, for example). When the text wrapping had
+been implemented, we realised that the same technique could also be
+used to add declarative animation elements to the SVG document, and
+make the SVG files more compact and easier to edit. A series of test
+files was produced where the original text elements in the SVG were
+replaced by tspan elements (for wrapping), setAttribute elements (for
+bringing the text into view and hiding it) and animate/animateMotion
+elements (for scaling and moving the tspan elements). However, none of
+these tests were successful, and this technique was abandoned.</p><h3><a id="Section_2_4"></a><a id="S2.4">2.4 How it works</a></h3><table class="codeBlock"><tbody><tr><td><pre>&lt;g id="textBox_8" style="visibility:hidden;"&gt;
+  &lt;text:soa id="textContent_8" width="385" style="font-family: pm; font-size:1.1; text-rendering: optimizeLegibility; text-align: justify;line-interval:1.276"&gt;
+    The one constant is that art is made by artists and that it is made for its own sake.
+  &lt;/text:soa&gt;
+  &lt;set attributeName="visibility" id="showIt_7" attributeType="CSS" begin="hideIt_6.begin" end="indefinite" to="visible" /&gt;
+  &lt;animate attributeName="font-size" id="scale1_7" attributeType="CSS" begin="showIt_7.begin" dur="5s" fill="remove" calcMode="spline" keyTimes="0;1" values="0em;1em" keySplines="0,0.3,0.3,1" /&gt;
+  &lt;animateMotion id="path1_7" path="M 0 -50 L 0 0" begin="scale1_7.begin" dur="5s" fill="remove" calcMode="spline" keyPoints="0;1" keySplines="0,0.1,0.1,1" /&gt;
+  &lt;animate attributeName="font-size" id="scale2_7" attributeType="CSS" begin="scale1_7.end" dur="5s" fill="remove" calcMode="spline" keyTimes="0;1" values="1em;20em" keySplines="0.7,0,1,0.7" /&gt;
+  &lt;animateMotion id="path2_7" path="M0 0 L 0 950" begin="scale2_7.begin" dur="5s" fill="remove" calcMode="spline" keyPoints="0;1" keySplines="0.9,0,1,0.9" /&gt;
+  &lt;set attributeName="visibility" id="hideIt_7" attributeType="CSS" begin="scale2_7.end" end="indefinite" to="hidden" /&gt;
+&lt;/g&gt;
+      </pre></td></tr></tbody></table><p>In
+the above code, the first &lt;set&gt; element is triggered by the
+disappearance of the previous text fragment (which is hidden using a
+&lt;set&gt; element with id of "hideIt_6"). This then triggers the
+first &lt;animate&gt; element, which in turn triggers the first
+&lt;animateMotion&gt; element. These two elements scale the text from
+0em to 1em, and move the text so it appears to remain centred on the
+screen. Once the scaling has finished, an additional pair of
+&lt;animate&gt; and &lt;animateMotion&gt; elements scale and move the
+text off-screen, and a final &lt;set&gt; element hides the text and
+triggers the next element in the sequence. These two pairs of SMIL
+elements could, of course, be merged into a single one, but this wasn't
+carried out as we felt that this would commit us to one mode of working
+with the text prematurely.</p><h2><a id="Section_3"></a><a id="S3.">3. Building The Story of Art</a></h2><h3><a id="Section_3_1"></a><a id="S3.1">3.1 Production</a></h3><p>Once
+we had a working prototype containing samples of the finished text, we
+decided to write a database system to manage the text in the piece. The
+reasoning behind this was that we knew the text was likely to change
+close to the deadline, so the production of the finished piece would
+need to be automated. We also knew that the artist would need to
+proof-read some of the sections, so we needed a way of selecting parts
+of the finished piece and previewing them. A database application was
+written using PHP/MySQL which would eventually enable the following:</p><ol class="arabic"><li>initial import of text</li><li>setting
+of durations for animations, either by specifying durations for
+individual pieces of text, or by selecting a number of texts, then
+specifying a start and end duration (durations between these were
+calculated and inserted automatically).</li><li>Editing of text</li><li>export of text to SVG files, either in its entirety, or by selecting user-definable sections of the piece.</li><li>export back to text files.</li></ol><p>The
+interface to the text consisted of a tabulated list of all the
+sentences in the piece, with a set of controls to enable deletion,
+editing and re-ordering of sentences, and the insertion of new
+sentences. The listing could be configured to display any number of
+sentences per page, and controls were provided to enable navigation
+through the text (which eventually grew to 6355 sentences).</p><div class="figure"><a id="Figure_1"></a><div class="graphic"><a id="Figure_1"><img src="images/fig1-soa-interface.png" alt="fig1-soa-interface.png"></a></div><blockquote class="figcaption"><p><a id="Figure_1">This
+shows the main interface for the PHP/MySQL application used to generate
+the SVG files for The Story of Art. Each sentence is in a table row,
+with buttons on the left to view and save individual sentences. The
+text of each sentence is clickable, and pops-up an editor window, and
+the timings for each sentence can be edited by clicking on the
+behaviour button to the right of the text. New sentences are inserted
+above in the sequence by clicking on the insert button, and sentences
+can be deleted using the delete button. Sentences are re-ordered by
+clicking on the up and down arrows to the far right.<br>Just above the
+table are the controls to navigate through the text stored for the
+piece, including a drop-down list to set the number of sentences
+displayed per page, another drop-down list to select the number of the
+page displayed, and arrow buttons to navigate through pages
+sequentially.<br>Above the navigation, controls for splitting the piece
+into sections enabled us to set start and end points for named sections
+of the piece for previewing purposes, and filter the text displayed so
+only text within a particular section is shown.<br>The top of the
+screen shows the navigation for different parts of the application -
+home being the main interface shown above, import being the Import
+Export page, and controls being the control panel page where the speeds
+of the animation were set.</a></p></blockquote><blockquote class="figureTitle"><p><a id="Figure_1"><b>Figure 1: Story of Art generator - main interface</b></a></p></blockquote></div><div class="figure"><a id="Figure_2"></a><div class="graphic"><a id="Figure_2"><img src="images/fig2-soa-importexport.png" alt="fig2-soa-importexport.png"></a></div><blockquote class="figcaption"><p><a id="Figure_2">This
+shows the import/export page for the PHP/MySQL application used to
+import plain text files for The Story of Art. Here, a text file
+compiled from 6 Microsoft Word documents provided by the artist was
+imported into the system. The text was parsed to split it up into
+sentences, and headings and sub-headings identified by marking them
+with exclamation mark prefixes (these headings were displayed in a
+different font size and behaved slightly differently to the bulk of the
+text).</a></p></blockquote><blockquote class="figureTitle"><p><a id="Figure_2"><b>Figure 2: Story of Art generator - import/export</b></a></p></blockquote></div><div class="figure"><a id="Figure_3"></a><div class="graphic"><a id="Figure_3"><img src="images/fig3-soa-controlpanel.png" alt="fig3-soa-controlpanel.png"></a></div><blockquote class="figcaption"><p><a id="Figure_3">This
+shows the control panel for the PHP/MySQL application used to set
+speeds and acceleration changes in the SVG files for The Story of Art.
+Here, we controlled the behaviour of each sentence on a larger scale,
+with controls to set linear acceleration from one speed to another, set
+speeds for specific sections, and test different speeds (using presets
+and user defined values).<br>The "buil it" button accessed a special
+PHP function which was edited manually, and which was eventually used
+to build the whole piece. Clicking on this button caused all timings to
+be set at pre-defined values for pre-defined sections, and the 101 SVG
+files were written to the filesystem (this process took over 10
+minutes).</a></p></blockquote><blockquote class="figureTitle"><p><a id="Figure_3"><b>Figure 3: Story of Art generator - control panel</b></a></p></blockquote></div><div class="figure"><a id="Figure_4"></a><div class="graphic"><a id="Figure_4"><img src="images/fig4-soa-insertpopup.png" alt="fig4-soa-insertpopup.png"></a></div><blockquote class="figcaption"><p><a id="Figure_4">This
+is a screenshot of the popup window used to insert a sentence into the
+piece. The type: drop-down list enabled us to change the behaviour of
+the sentence by specifying that it was a heading or a sub-heading.</a></p></blockquote><blockquote class="figureTitle"><p><a id="Figure_4"><b>Figure 4: Story of Art generator - insert text popup</b></a></p></blockquote></div><div class="figure"><a id="Figure_5"></a><div class="graphic"><a id="Figure_5"><img src="images/fig5-soa-editpopup.png" alt="fig5-soa-editpopup.png"></a></div><blockquote class="figcaption"><p><a id="Figure_5">This is a screenshot of the popup window used to edit existing sentences in the piece.</a></p></blockquote><blockquote class="figureTitle"><p><a id="Figure_5"><b>Figure 5: Story of Art generator - edit text popup</b></a></p></blockquote></div><div class="figure"><a id="Figure_6"></a><div class="graphic"><a id="Figure_6"><img src="images/fig6-soa-sectionpopup.png" alt="fig6-soa-sectionpopup.png"></a></div><blockquote class="figcaption"><p><a id="Figure_6">This
+is a screenshot of the popup window used to add new sections to the
+piece. Sections are named, then the start and end points set using the
+two drop-down lists (each of which contains a truncated sentence from
+the piece (6355 items in total!).</a></p></blockquote><blockquote class="figureTitle"><p><a id="Figure_6"><b>Figure 6: Story of Art generator - add section popup</b></a></p></blockquote></div><p><a id="Figure_6">Using
+a database to manage the text made the identification of errors in the
+original text files easy. It also provided a means to experiment with
+timings for the later sections in order to determine the maximum speed
+the text could travel at without causing a degradation in the
+smoothness of the animation (the final sentences are on screen for 0.2
+seconds in total). Once we had imported the text and set the parameters
+to control the acceleration of the animation, we were in a position to
+test the final, 8Mb SVG file on a machine specially bought by Tate
+Modern for the purpose.</a></p><h3><a id="Section_3_2"></a><a id="S3.2">3.2 Testing</a></h3><p>In
+the examples we had for testing at the time, we noticed that
+particularly long sentences or paragraphs (some of which produced over
+10 lines of text) were very sluggish to animate compared to those
+consisting of a single line of text. We decided to ask the artist to
+shorten or break up these sentences/paragraphs, which she did once we
+had identified them using the PHP/MySQL tool. A decision was then made
+to split the text into sentences and two types of headings, main
+headings which corresponded to art movements and styles which
+disappeared off the top of the screen, and smaller titles corresponding
+to artists names which disappeared off the bottom, like the rest of the
+text.</p><p>Testing the final version started rather ominously with a 5
+minute wait before anything happened at all. This delay can be
+accounted for by the fact that the script file needed to modify the
+document extensively in order to wrap the text properly. Once the
+animation started, we found that the quality and smoothness of the
+movement was significantly worse than that we had observed in smaller
+files. When we tried to find what the bottleneck was, we observed that
+the processor worked to full capacity at the start of the animation,
+then the processor time needed dropped to 35% or so. Once a sentence
+entered and started its first animation, processing time went up to 80%
+of capacity, and finally reached 100% and stayed there once the text
+entered its final animation sequence (which took the text off-screen).
+When we observed a smaller file, we saw that the processor again worked
+to its full capacity at the start, which was expected, then dropped to
+2-5% before the animation sequences started. Although approximately the
+same behaviour was observed during the animation sequences, the
+processor reached its maximum capacity much later and the results were
+far better.</p><p>After searching for a possible explanation for this
+behaviour, we finally decided to split the animation into a series of
+smaller files and daisy-chain them together with the getSrc() function.
+The version shown at Tate Modern consisted of the first 70% of the
+final text (the slower sections) split at logical points to minimise
+the delay between files (even though the files were local and loaded
+very quickly, the script still needed to process the text). The final
+30% of the text hadn't been split into any logical sections by the
+artist at the time, and when we tested it as one large file (3.5Mb),
+the results were very disappointing. The final version (shown at the
+PowerPlant gallery in Toronto) consists of 101 SVG files in total, with
+a duration of 9 hours and 45 minutes.</p><h2><a id="Section_4"></a><a id="S4.">4. Conclusion</a></h2><p>One
+major advantage in producing the animation in SVG was that the
+animations could be standardised to follow precise paths and adhere to
+strict timings. The finished piece uses keySplines to produce the
+visual effect of the text appearing and decelerating sharply to the
+point at which it could be read, then accelerating slowly from this
+point. The keySplines ensure that the motion and scaling of the text is
+kept consistent, and that the illusion of text travelling towards the
+viewer is maintained.</p><p>We were immensely impressed by the results
+we managed to achieve with SVG in comparison to those we may have been
+able to achieve in Macromedia Flash. Apart from the obvious
+disadvantage that a Flash version would be much more difficult to edit
+and maintain, the tests we initially did in Flash of text animation
+were very poor compared to those we carried out in SVG, which had
+higher text definition and much smoother animation.</p><p>One very
+useful thing to have would be a way of converting the piece to a video
+format so the piece can be shown on equipment which is commonly used in
+a gallery context for presentations. Emma only managed to view the
+piece on her G4 laptop after a struggle with operating system software,
+browser software, and SVG player installation. Although the situation
+is much better now, with versions of Adobe's player available for
+MacOSX, the installation of the piece continues to be problematic for
+galleries. The SVG animation also requires a very fast machine in order
+to run smoothly.</p><h2 class="acknowlHeader"><a id="S.Acknowledgements">Acknowledgements</a></h2><div class="acknowl">Many
+thanks to Emma Kay for being so enthusiastic about our adoption of SVG
+as the technology to realise this piece. Also many thanks to Anna
+Nesbit at Tate Modern for her help in setting up the piece in Tate
+Modern and making sure it kept running for the duration of the
+installation.</div><h2 class="bibliogHeader"><a id="S.Bibliography">Bibliography</a></h2><dl class="bibliog"><dt class="bib" id="svgbook"><b>[svgbook]</b></dt><dd class="pub">
+			Learn SVG: The Web Graphics Standard
+			<cite>Learn SVG</cite>
+      Jon Frost
+      Stefan Goessner
+      Michel Hirtzler
+      Robert DiBlasi
+      June 2003
+      Learn SVG
+    </dd></dl><p class="credits"><small>XHTML rendition made possible by
+      <a href="http://www.schemasoft.com/">SchemaSoft</a>'s
+      <a href="http://www.schemasoft.com/DocBook/">Document Interpreter</a>™
+      technology.</small></p></body></html>

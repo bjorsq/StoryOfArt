@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>SVG file viewer</title>
+<style type="text/css">
+<!--
+body {
+  margin:0px;
+  padding:0px;
+  border:0px;
+}
+#form {
+  padding:30px;
+  font:12px verdana,helvetica,sans-serif;
+}
+-->
+</style>
+
+</head>
+<body>
+<script language="JavaScript" type="text/javascript">
+<!--
+var files=["ten_sentences_per_second.svg","four_sentences_per_second.svg","two_sentences_per_second.svg","one_sentence_per_second.svg","one_sentence_every_two_seconds.svg","one_sentence_every_twenty_seconds.svg"];
+var qs = window.location.search.substring(1);
+var filename = "";
+if (qs != "") {
+    var nvp = qs.split("&");
+    for (var i = 0; i < nvp.length; i++) {
+        var nvpsplit = nvp[i].split("=");
+        if (nvpsplit[0] == "svgfile") {
+            filename = nvpsplit[1];
+        }
+    }
+}
+if (filename != "") {
+    document.write('<embed name="SVGtest" width="1024" height="768" src="'+filename+'"></embed>');
+} else {
+    document.write('<div id="form"><h3>SVG File viewer</h3><select name="fileList" onchange="window.location.href=window.location.href+\'?svgfile=\'+this.options[this.selectedIndex].value"><option value="">Please Select a file:</option>');   
+    for (var i = 0; i < files.length; i++) {
+        document.write('<option value="'+files[i]+'">'+files[i]+'</option>');
+    }
+    document.write('</select><p>Note: all files contain 4290 sentences and take a couple of minutes to load, process and start on my laptop. The slow one here is a bit of an experiment in changing the speed and the acceleration curve of the initial zoom animation.</p></div>');
+}
+//-->
+</script>
+
+</body>
+</html>

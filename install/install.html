@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Emma Kay: The Story of Art</title>
+<style type="text/css">
+<!--
+body {
+  margin:20px;
+  font:small/1.5em verdana,helvetica,arial,sans-serif;
+  color:#333;
+}
+h1, h2, h3 {
+  color:#666;
+} 
+h1 {
+  font:bold x-large "Courier New",Courier,mono;
+}
+h2 {
+  font:bold large "Courier New",Courier,mono;
+}
+h3 {
+  font:bold medium "Courier New",Courier,mono;
+}
+code {
+  font:small/1.5em "Courier New",Courier,mono;
+  background-color:#eee;
+}
+a, a:active, a:visited, a:link {
+  font:small/1.5em verdana,helvetica,arial,sans-serif;
+  color:#000;
+  text-decoration:none;
+  border-bottom:1px dashed #666;
+}
+a:hover, a:visited:hover {
+  font:small/1.5em verdana,helvetica,arial,sans-serif;
+  color:#000;
+  text-decoration:none;
+  border-bottom:1px dashed #000;
+  background-color:#eee;
+}
+-->
+</style>
+</head>
+<body>
+<h1>The Story of Art</h1>
+<p>The Story of Art is comprised of a series of <acronym title="Scalable Vector Graphics">SVG</acronym> files and an external script file. Each of the <acronym title="Scalable Vector Graphics">SVG</acronym> files contains animated text, and when the animation has finished playing, the next file in the sequence is loaded automatically. In this way, the piece runs sequentially through all the files, and loops back on itself when it reaches the end.</p>
+<h2>Installation Instructions</h2>
+<p>These instructions can be downloaded here as a <a href="install.doc">Word 6.0/95 document</a> or a <a href="install.pdf">PDF document</a>.</p>
+<h3>System Requirements</h3>
+<ul>
+<li>3.0GHz processor or faster. Multiple processors may also help increase the quality of the animation (the SVG files require a great deal of processor power).</li>
+<li>256 Mb RAM</li>
+<li>20 Mb hard disk space</li>
+<li>Windows 2000/XP or later</li>
+<li>Internet Explorer version 6 or above.</li>
+<li>Adobe SVG Viewer version 3 or above<br />This is available as a free download from the Adobe website: <a href="http://www.adobe.com/svg/viewer/install/main.html">see this page for details</a>. Installers for various platforms are also available on this CD in the <code>adobe SVG viewer</code> folder.</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>Unzip the files to <code>C:\soa</code> by double-clicking on the <code>StoryOfArt.exe</code> file on this CD in the <code>install</code> folder (<a href="StoryOfArt.exe">here</a>).</li>
+<li>You should have 102 files in this directory, called <code>soa[0-101].svg</code>, and one file called <code>soa_parts.es</code>.</li>
+<li>Verify that you can play one of the <acronym title="Scalable Vector Graphics">SVG</acronym> files by double clicking on it. If Adobe SVG Viewer is installed correctly, this should open Internet Explorer, load the SVG viewer plug-in, and start to play the animation.</li>
+<li>Make a shortcut to the first file in the piece by right-clicking on the desktop and choosing New->Shortcut from the menu.</li>
+<li>Type the following where it says "type the location of the item":<br /><code>&quot;C:\Program Files\Internet Explorer\IEXPLORE.EXE&quot; -k &quot;C:\soa\soa0.svg&quot;</code><br />The above will produce a link to the SVG file on the desktop which will open in Internet Explorer in "kiosk mode". Kiosk mode disables all mouse-driven menus in Internet Explorer, but does not disable the mouse or hide it (this has to be done manually).</li>
+<li>Make sure the computer on which it installed does not go to sleep, or switch off the monitor, by checking the Power Options (Start-&gt;Control Panel-&gt;Power Options).</li>
+</ol>
+<h2>Running the piece</h2>
+<h3>Starting the piece manually</h3>
+<ol>
+<li>Double click on this shortcut you created in steps 4. and 5. above to start the piece.</li>
+<li>Move the mouse off-screen.</li>
+<li>Once started, the piece should loop indefinitely without reloading.</li>
+</ol>
+<h3>Starting the piece automatically</h3>
+<ol>
+<li>Copy the shortcut you created in steps 4. and 5. above to the startup folder (in Start->Programs), so the piece starts automatically when the machine boots.</li>
+<li>Restart the machine to test.</li>
+</ol>
+<h3>Shutting down the piece</h3>
+<p>Press <code>Alt+F4</code> on the keyboard to shut the piece down.</p>
+<h3>Troubleshooting</h3>
+<p>If the piece stops for any reason, or begins to look strange, jerky or in any way abnormal, restart the piece by pressing <code>Alt-F4</code> on the keyboard and double-clicking the shortcut again. If this doesn't fix the problem, restart the machine (and then restart the piece again if you haven't set the piece to start automatically).</p>
+<p>The animation requires a lot of resources in which to run - mainly processor power. If there are any programs running on the machine which take up processor time (such as anti-virus programs), they may cause the piece to run less smoothly. The installation at the Tate Modern used a brand new PC with a fresh install of Windows XP Professional - all unnecessary services were disabled, and the only software installed (other than the operating system) was the SVG viewer.</p>
+<h4>Alternative platforms</h4>
+<p>As the animation requires the minimum of a fast processor and the presence of Adobe's SVG viewer, it can probably run on linux, solaris and macintosh computers as well (installers for these platforms are included on this CD in the  <code>adobe SVG viewer</code> folder). However, none of these platforms have been tested yet.</p>
+<p>If you wish to install The Story of Art on one of these alternative platforms, you will need to copy all the files from the <code>files</code> folder to your hard drive, and start the piece by opening <code>soa0.svg</code>.</p>
+</body>
+</html>

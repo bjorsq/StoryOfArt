@@ -1,0 +1,121 @@
+h1.title {
+  font:bold 14pt "Courier New",Courier,mono;
+  color:#eee;
+  letter-spacing:40px;
+  float:right;
+}
+h1 {
+  font:bold 16pt "Courier New",Courier,mono;
+  color:#666;
+}
+h2 {
+  font:bold 14pt "Courier New",Courier,mono;
+  color:#666;
+}
+h3 {
+  font:bold 12pt "Courier New",Courier,mono;
+  color:#666;
+}
+p {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+}
+td {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+}
+li {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  line-height:2em;
+  color:#666;
+}
+li.blank {
+  list-style-type:none;
+  list-style-image:none;
+}
+body {
+  margin:0px;
+  padding:20px;
+}
+b {
+  font:bold 10pt verdana,helvetica,arial,sans-serif;
+  color:#333;
+}
+input, select, textarea {
+  font:10pt "Courier New",Courier,mono;
+  color:#333;
+  border:1px solid #666;
+}
+a, a:active, a:visited, a:link {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+  text-decoration:none;
+  line-height:1.5em;
+  border-bottom:1px dashed #666;
+}
+a:hover, a:visited:hover {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#333;
+  text-decoration:none;
+  line-height:1.5em;
+  border-bottom:1px dashed #000;
+  background-color:#eee;
+}
+a.plain, a.plain:active, a.plain:visited, a.plain:link, a.plain:hover, a.plain:visited:hover {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+  text-decoration:none;
+  border:0px;
+}
+a.button, a.button:active, a.button:visited, a.button:link {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+  text-decoration:none;
+  border:1px dashed #666;
+  padding:2px;
+  margin:5px;
+}
+a.button:hover, a.button:visited:hover {
+  font:10pt verdana,helvetica,arial,sans-serif;
+  color:#333;
+  text-decoration:none;
+  border:1px dashed #333;
+  background-color:#eee;
+  padding:2px;
+  margin:5px;
+}
+a.nav, a.nav:active, a.nav:visited, a.nav:link {
+  font:bold 10pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+  text-decoration:none;
+  border:0px;
+  padding:0px 10px;
+  display:block;
+}
+a.nav:hover, a.nav:visited:hover {
+  font:bold 10pt verdana,helvetica,arial,sans-serif;
+  color:#fff;
+  text-decoration:none;
+  background-color:#999;
+  border:0px;
+  padding:0px 10px;
+  display:block;
+}
+.current {
+  font:bold 10pt verdana,helvetica,arial,sans-serif;
+  color:#fff;
+  text-decoration:none;
+  display:block;
+  padding:0px 10px;
+  background-color:#999;
+}
+ul {
+  list-style-image:url(../images/bullet1.png);
+}
+ul ul {
+  list-style-image:url(../images/bullet2.png);
+}
+.tiny {
+  font:7pt verdana,helvetica,arial,sans-serif;
+  color:#666;
+}

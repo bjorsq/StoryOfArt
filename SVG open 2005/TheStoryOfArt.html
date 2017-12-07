@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title></title>
+<style type="text/css" media="screen">
+/*<![CDATA[*/
+<!--
+body {
+  font:small/1.5 verdana,arial,helvetica,sans-serif;
+  color:#333;
+  background-color:#999;
+  margin:0 0 0 90px;
+}
+#container {
+  background-color:#fff;
+  padding:5%;
+}
+#content {
+  background-image: url(http://e-2.org/logo.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  padding-top:20px;
+}
+-->
+/*]]>*/
+</style>
+<style type="text/css" media="print">
+/*<![CDATA[*/
+<!--
+body {
+  font:small/1.5 georgia,times,serif;
+  color:#000;
+  background-color:#fff;
+  margin:5pt;
+}
+#content {
+  background-image: url(http://e-2.org/logo.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  padding-top:20px;
+}
+-->
+/*]]>*/
+</style>
+</head>
+<body>
+<div id="container">
+<div id="content">
+<h1>The Story of Art</h1>
+<p>In February 2004, Dean Jackson was on his first visit to London. Naturally he took the opportunity to visit one of the most popular and successful modern art galleries in the world, Tate Modern. Strolling through the galleries on the fifth floor, he came across 'The Story of Art' - a 25'x15' projection of animated text by artist Emma Kay - and thought &quot;Cool! You could do that in SVG!&quot;</p>
+<p>As Dean said afterwards, &quot;I was really surprised and impressed to find out later that it had been done in SVG&quot;. It was a nice welcome to London for Dean and a great compliment for e-2, who made the piece with Emma.</p>
+<p>This paper will discuss how the work came about, the choice of SVG, the way the piece was made, the lessons learnt for artist and production team and what the future implications and plans for the project are.</p>
+<p>Emma Kay's practice involves the reconstruction of epic historical, geographical or fictional stories entirely from memory. One of her purposes is to provide a springboard for the viewer's exploration of their own memory and knowledge. </p>
+<p>In a previous commission from the Chisenhale Gallery - &quot;The Future from Memory&quot; - Emma worked with e-2 to produce a projection of animated text, realised using Macromedia Flash and Swift 3D software. During the course of production, it became obvious that editing the piece would be very difficult, as the addition of a small piece of text would necessitate rendering it to a 3D vector file, importing it into Flash, and its insertion within the desired frames of the sequence. One of the key motivations behind using SVG for &quot;The Story of Art&quot; was that the editing process could be carried out on text files, and the conversion into the finished animation could be performed in a single step. Another was the quality of the text rendition when projected on a large scale. Video was initially discussed as a possibility, but the quality issue, together with costs of editing and re-editing, encouraged us to use SVG.</p>
+<p>The Story of Art consists of a series of sentences, wrapped to form short paragraphs, which appear to travel towards the viewer from a vanishing point just above the centre of the screen. The text rests in the centre of the screen briefly, before accelerating past the viewer either to the top or bottom of the viewport. The animation begins slowly, accelerating imperceptibly over the duration of the piece (9 hours, 45 minutes) to reach speeds where only the occasional word is decipherable towards the end.  While in the Tate, the piece looped continuously for 11 months.</p>
+<p>SVG proved to be invaluable during the fine-tuning process of determining the speed, acceleration, path and scaling of the text. The animation was carried out using SMIL animation elements, and formatting carried out using ECMAScript. The spline features of SVG were particularly useful in controlling and synchronising the acceleration along the animation path and scaling of the text.</p>
+<p>We experienced initial problems in the processing required to format such a large amount of text (over 120,000 words, 7-8Mb), which took over 3 minutes on the hardware purchased for the project (2.8GHz Xeon processor with 1Gb RAM). Also, once the file had loaded into Adobe's SVG Viewer, the processing power required to keep the document in memory (typically 30-35% of the machine's capacity) detracted from the processing power required to perform the animation sequences (which invariably peaked at 100%), resulting in &quot;dropped frames&quot; at higher speeds. This was solved by splitting the text at logical points into a series of 101 separate files, and &quot;daisy-chaining&quot; them together using the getURL() function.</p>
+<p>From our previous experience of working with the artist, we knew that the development of the text would accelerate closer to the launch date, and that last minute editing of the text would inevitably be needed, so it became crucially important to build a tool which could automate the production. A tool was developed using PHP to import text into a MySQL database, manipulate the text and animation parameters, and finally export the text as a series of SVG files.</p>
+<p>The experience has heightened the awareness of SVG as a creative medium among artists and arts institutions. The Story of Art will continue to do so as it traverses the galleries of the world.</p>
+<p>SVG has the potential to extend and enrich artistic practice. In the case of Emma Kay this may mean extending her reach to explore &quot;collective memory&quot; in her work by encouraging participation via the internet.</p>
+<p>The Story of Art is currently showing at the PowerPlant gallery at the Harbourfront Centre in Toronto (<a href="http://www.thepowerplant.org/current.html">http://www.thepowerplant.org/current.html</a>).</p>
+</div>
+</div>
+</body>
+</html>
