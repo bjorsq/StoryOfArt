@@ -56,6 +56,7 @@
      * Plays the piece in real time. URL options:
      *   ?t=2h15m30s  start at that point (or plain seconds)
      *   ?debug       show the time
+     *   ?aspect=5:3  mask the top and bottom, as the projection was at the Tate
      *   ?capture     don't play - scripts/capture.js renders frames with player.renderAt()
      * While playing: space pauses, left/right skip 10 seconds (60 with shift)
      */
@@ -71,6 +72,12 @@
     }
 
     const params = new URLSearchParams(location.search);
+    /* masking: show a band of the 1024x768 composition with the given aspect ratio */
+    const aspect = (params.get('aspect') || '4:3').split(':').map(Number);
+    if (aspect.length === 2 && aspect[0] > 0 && aspect[1] > 0) {
+        const h = Math.min(768, 1024 * aspect[1] / aspect[0]);
+        document.getElementById('projection').setAttribute('viewBox', '0 ' + ((768 - h) / 2) + ' 1024 ' + h);
+    }
     window.playerReady = fetch('timeline.json').then(r => r.json()).then(timeline => {
         const player = new StoryOfArt(document.getElementById('stage'), timeline);
         window.player = player;

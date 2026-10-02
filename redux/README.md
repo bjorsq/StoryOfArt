@@ -42,7 +42,25 @@ node scripts/capture.js --from 1h --to 2h --fps 50 --width 2048 --out output/par
 node scripts/capture.js --stills 5,9258.05 --out output/stills
 ```
 
-Defaults are 30fps at 1440x1080. Rendering runs at about 20 frames per second, so the whole piece at 30fps (about 1 million frames) would take around 14 hours in one process. Split it into ranges, render them in parallel, and join them with ffmpeg's concat demuxer.
+Defaults are 30fps at 1440x1080 (4:3, the composition's own shape). `--aspect` crops the top and bottom of the composition to another shape: the projection was masked at the Tate, so `--aspect 5:3` matches its 25' x 15' screen, and `--aspect 16:9` (with `--width 1920`) gives HD video. Even the tallest paragraph fits well inside a 16:9 crop.
+
+### Rendering the whole piece in sections
+
+`scripts/render-sections.js` renders the piece as one file per section, split at the section headings (72 sections, including the introduction before the first heading), in parallel:
+
+```
+node scripts/render-sections.js --list
+node scripts/render-sections.js --width 1920 --aspect 16:9 --jobs 5
+node scripts/render-sections.js --only 23,71        # just these sections
+```
+
+Files go to `output/sections/`, e.g. `23-perspective.mp4`. Each section is rendered to a `.partial.mp4` file and renamed when it's finished, so the render can be stopped and restarted without losing finished sections. Sections share one frame grid, so they join exactly; once all are done, `output/sections/concat.txt` joins them without re-encoding:
+
+```
+ffmpeg -f concat -safe 0 -i output/sections/concat.txt -c copy output/story-of-art.mp4
+```
+
+At 1920x1080 each job renders about 16 frames per second, so the piece (about 1 million frames at 30fps) takes about 17.5 job-hours. The longest section, PAINTING (1h35m), takes about 3 hours on its own, so more than 5 or 6 jobs won't make the render much quicker.
 
 Notes on fidelity
 -----------------

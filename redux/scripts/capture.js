@@ -10,8 +10,13 @@
  *   node scripts/capture.js --from 0 --to 30 --out output/test.mp4
  *   node scripts/capture.js --from 1h --to 2h --fps 50 --width 2048 --out output/part2.mp4
  *   node scripts/capture.js --stills 5,12.5,9h29m --out output/stills
+ *   node scripts/capture.js --frames 2700:4500 --fps 30 --out output/frames.mp4
  *
- * Times are seconds, or like 2h15m30s.
+ * Times are seconds, or like 2h15m30s. --frames gives a range of frames
+ * (start inclusive, end exclusive) on the piece's frame grid at --fps, which
+ * render-sections.js uses so that sections join exactly.
+ * --aspect 5:3 crops the top and bottom of the 4:3 composition, as the
+ * projection was masked at the Tate (default 4:3).
  */
 const fs = require('fs');
 const path = require('path');
@@ -29,7 +34,7 @@ function parseTime(str) {
 }
 
 function args() {
-    const opts = { from: '0', to: '30', fps: '30', width: '1440', out: 'output/test.mp4', crf: '18' };
+    const opts = { from: '0', to: '30', fps: '30', width: '1440', out: 'output/test.mp4', crf: '18', aspect: '4:3' };
     const argv = process.argv.slice(2);
     for (let i = 0; i < argv.length; i += 2) {
         opts[argv[i].replace(/^--/, '')] = argv[i + 1];
@@ -55,12 +60,14 @@ function serve() {
 (async () => {
     const opts = args();
     const width = parseInt(opts.width, 10);
-    const height = Math.round(width * 3 / 4);
+    const [aw, ah] = opts.aspect.split(':').map(Number);
+    /* video encoders need even dimensions */
+    const height = Math.round(width * ah / aw / 2) * 2;
     const server = await serve();
     const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--hide-scrollbars'] });
     const page = await browser.newPage();
     await page.setViewport({ width, height });
-    await page.goto(`http://127.0.0.1:${server.address().port}/index.html?capture`);
+    await page.goto(`http://127.0.0.1:${server.address().port}/index.html?capture&aspect=${opts.aspect}`);
     await page.evaluate(() => window.playerReady);
     await page.evaluate(() => document.fonts.ready);
     const render = t => page.evaluate(t => window.player.renderAt(t), t);
@@ -76,9 +83,12 @@ function serve() {
         console.log(`stills written to ${dir}`);
     } else {
         const fps = parseFloat(opts.fps);
-        const from = parseTime(opts.from);
-        const to = parseTime(opts.to);
-        const frames = Math.round((to - from) / 1000 * fps);
+        let first = Math.round(parseTime(opts.from) / 1000 * fps);
+        let last = Math.round(parseTime(opts.to) / 1000 * fps);
+        if (opts.frames) {
+            [first, last] = opts.frames.split(':').map(Number);
+        }
+        const frames = last - first;
         const ffmpeg = spawn('ffmpeg', [
             '-y', '-loglevel', 'error',
             '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'png', '-i', '-',
@@ -87,7 +97,7 @@ function serve() {
         ], { stdio: ['pipe', 'inherit', 'inherit'] });
         const started = Date.now();
         for (let i = 0; i < frames; i++) {
-            await render(from + i * 1000 / fps);
+            await render((first + i) * 1000 / fps);
             const png = await page.screenshot({ type: 'png' });
             if (!ffmpeg.stdin.write(png)) {
                 await new Promise(resolve => ffmpeg.stdin.once('drain', resolve));
