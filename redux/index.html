@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Story of Art</title>
+    <meta name="description" content="The Story of Art, an animated text-based wall projection by Emma Kay, made with e-2. Shown at Tate Modern, London, and the Power Plant, Toronto.">
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        /* the 1024x768 projection, scaled to fit */
+        #projection {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #screen {
+            fill: #fff;
+        }
+        text {
+            fill: #000;
+            /* the original embedded an SVG font converted from Arial; Liberation Sans and Arimo have the same metrics */
+            font-family: Arial, "Liberation Sans", Arimo, Helvetica, sans-serif;
+            text-rendering: optimizeLegibility;
+        }
+        #debug {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            font: 14px monospace;
+            color: #0a0;
+        }
+        body.capture #debug {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <svg id="projection" viewBox="0 0 1024 768" preserveAspectRatio="xMidYMid meet" aria-label="The Story of Art by Emma Kay" role="img">
+        <defs>
+            <clipPath id="screen-clip"><rect width="1024" height="768"/></clipPath>
+        </defs>
+        <g clip-path="url(#screen-clip)">
+            <rect id="screen" width="1024" height="768"/>
+            <g id="stage"></g>
+        </g>
+    </svg>
+    <div id="debug" hidden></div>
+    <script src="player.js"></script>
+    <script>
+    /**
+     * Plays the piece in real time. URL options:
+     *   ?t=2h15m30s  start at that point (or plain seconds)
+     *   ?debug       show the time
+     *   ?capture     don't play - scripts/capture.js renders frames with player.renderAt()
+     * While playing: space pauses, left/right skip 10 seconds (60 with shift)
+     */
+    function parseTime(str) {
+        if (!str) return 0;
+        if (/^[\d.]+$/.test(str)) return parseFloat(str) * 1000;
+        const part = unit => parseFloat((str.match(new RegExp('([\\d.]+)' + unit)) || [, 0])[1]);
+        return (part('h') * 3600 + part('m') * 60 + part('s')) * 1000;
+    }
+    function formatTime(ms) {
+        const s = Math.floor(ms / 1000);
+        return Math.floor(s / 3600) + ':' + String(Math.floor(s / 60) % 60).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    }
+
+    const params = new URLSearchParams(location.search);
+    window.playerReady = fetch('timeline.json').then(r => r.json()).then(timeline => {
+        const player = new StoryOfArt(document.getElementById('stage'), timeline);
+        window.player = player;
+        if (params.has('capture')) {
+            document.body.classList.add('capture');
+            return player;
+        }
+        const debug = params.has('debug') ? document.getElementById('debug') : null;
+        if (debug) debug.hidden = false;
+        let offset = parseTime(params.get('t'));
+        let startedAt = performance.now();
+        const now = () => startedAt === null ? offset : offset + performance.now() - startedAt;
+        document.addEventListener('keydown', e => {
+            if (e.key === ' ') {
+                if (startedAt === null) {
+                    startedAt = performance.now();
+                } else {
+                    offset = now();
+                    startedAt = null;
+                }
+                e.preventDefault();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                offset = Math.max(0, now() + (e.shiftKey ? 60000 : 10000) * (e.key === 'ArrowLeft' ? -1 : 1));
+                if (startedAt !== null) startedAt = performance.now();
+            }
+        });
+        (function frame() {
+            const t = now();
+            player.renderAt(t);
+            if (debug) debug.textContent = formatTime(t % player.duration) + (startedAt === null ? ' (paused)' : '');
+            requestAnimationFrame(frame);
+        })();
+        return player;
+    });
+    </script>
+</body>
+</html>
