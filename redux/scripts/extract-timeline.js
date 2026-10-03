@@ -96,12 +96,44 @@ FILES.forEach(file => {
     }
 });
 
+/**
+ * The font: every file embeds the same SVG font, "pm" (Arial converted to an
+ * SVG font). The player draws its glyphs as paths, as the Adobe viewer did -
+ * paths scale smoothly, where browser text is hinted to whole pixels and
+ * steps as its size changes
+ */
+function extractFont(svg) {
+    const block = svg.match(/<font\b[\s\S]*?<\/font>/)[0];
+    const face = block.match(/<font-face([^>]*)>/)[1];
+    const glyphs = {};
+    for (const g of block.matchAll(/<glyph\b([^>]*?)(?:\/>|>([\s\S]*?)<\/glyph>)/g)) {
+        const attrs = g[1];
+        const unicode = attr(attrs, 'unicode');
+        if (unicode === null) continue;
+        const d = attr(attrs, 'd') || ((g[2] || '').match(/\bd="([^"]*)"/) || [])[1] || '';
+        glyphs[decode(unicode)] = [parseFloat(attr(attrs, 'horiz-adv-x') || attr(block, 'horiz-adv-x')), d.replace(/\s+/g, ' ').trim()];
+    }
+    const missing = block.match(/<missing-glyph([^>]*)>/)[1];
+    return {
+        unitsPerEm: parseFloat(attr(face, 'units-per-em')),
+        missing: parseFloat(attr(missing, 'horiz-adv-x')),
+        glyphs,
+    };
+}
+const font = extractFont(fs.readFileSync(path.join(SRC, FILES[0]), 'latin1'));
+/* only the glyphs the text uses */
+const used = new Set(boxes.map(b => b.text).join(''));
+font.glyphs = Object.fromEntries(Object.entries(font.glyphs).filter(([ch]) => used.has(ch)));
+const unknown = [...used].filter(ch => !font.glyphs[ch]);
+if (unknown.length) warnings.push('characters with no glyph: ' + unknown.join(''));
+
 /* the splines and font settings come from a handful of presets, so store them once */
 const splineSets = [...new Set(boxes.map(b => JSON.stringify(b.splines)))];
 const out = {
     screen: { width: 1024, height: 768 },
     duration: boxes[boxes.length - 1].end,
     splines: splineSets.map(s => JSON.parse(s)),
+    font,
     boxes: boxes.map(b => {
         const box = {
             start: b.start,

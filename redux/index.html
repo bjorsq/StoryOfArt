@@ -21,11 +21,9 @@
         #screen {
             fill: #fff;
         }
-        text {
+        /* the text is drawn with the glyphs of the original SVG font, as paths (player.js) */
+        #stage {
             fill: #000;
-            /* the original embedded an SVG font converted from Arial; Liberation Sans and Arimo have the same metrics */
-            font-family: Arial, "Liberation Sans", Arimo, Helvetica, sans-serif;
-            text-rendering: optimizeLegibility;
         }
         #debug {
             position: fixed;
@@ -35,6 +33,43 @@
             color: #0a0;
         }
         body.capture #debug {
+            display: none;
+        }
+        /* fullscreen button: shown when the mouse moves, hidden again (with the pointer) after a few seconds */
+        .fullscreen-btn {
+            position: fixed;
+            z-index: 1;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            padding: 2px;
+            border: none;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        body.idle {
+            cursor: none;
+        }
+        body.idle .fullscreen-btn:not(:focus-visible) {
+            opacity: 0;
+            pointer-events: none;
+        }
+        body.capture .fullscreen-btn {
+            display: none;
+        }
+        .fullscreen-btn svg {
+            display: block;
+        }
+        .fullscreen-btn path {
+            fill: none;
+            stroke: hsl(225, 10%, 8%);
+            stroke-width: 4;
+        }
+        .fullscreen-btn:not(.on) .icon-leave,
+        .fullscreen-btn.on .icon-enter {
             display: none;
         }
     </style>
@@ -50,6 +85,12 @@
         </g>
     </svg>
     <div id="debug" hidden></div>
+    <button class="fullscreen-btn" aria-label="Enter fullscreen" hidden>
+        <svg width="28" height="28" viewBox="-2 -2 28 28" aria-hidden="true">
+            <g class="icon-enter"><path d="M 2 9 v -7 h 7"/><path d="M 22 9 v -7 h -7"/><path d="M 22 15 v 7 h -7"/><path d="M 2 15 v 7 h 7"/></g>
+            <g class="icon-leave"><path d="M 24 17 h -7 v 7"/><path d="M 0 17 h 7 v 7"/><path d="M 0 7 h 7 v -7"/><path d="M 24 7 h -7 v -7"/></g>
+        </svg>
+    </button>
     <script src="player.js"></script>
     <script>
     /**
@@ -58,7 +99,8 @@
      *   ?debug       show the time
      *   ?aspect=5:3  mask the top and bottom, as the projection was at the Tate
      *   ?capture     don't play - scripts/capture.js renders frames with player.renderAt()
-     * While playing: space pauses, left/right skip 10 seconds (60 with shift)
+     * While playing: space pauses, left/right skip 10 seconds (60 with shift),
+     * f toggles fullscreen (as does the button which appears when the mouse moves)
      */
     function parseTime(str) {
         if (!str) return 0;
@@ -90,8 +132,31 @@
         let offset = parseTime(params.get('t'));
         let startedAt = performance.now();
         const now = () => startedAt === null ? offset : offset + performance.now() - startedAt;
+        /* fullscreen */
+        const fullscreenBtn = document.querySelector('.fullscreen-btn');
+        const toggleFullscreen = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+        if (document.fullscreenEnabled) {
+            fullscreenBtn.hidden = false;
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+            document.addEventListener('fullscreenchange', () => {
+                const on = !!document.fullscreenElement;
+                fullscreenBtn.classList.toggle('on', on);
+                fullscreenBtn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
+            });
+        }
+        let idleTimer;
+        const wake = () => {
+            document.body.classList.remove('idle');
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
+        };
+        ['mousemove', 'mousedown', 'touchstart'].forEach(type => document.addEventListener(type, wake));
+        wake();
+
         document.addEventListener('keydown', e => {
-            if (e.key === ' ') {
+            if (e.key === 'f' && document.fullscreenEnabled) {
+                toggleFullscreen();
+            } else if (e.key === ' ') {
                 if (startedAt === null) {
                     startedAt = performance.now();
                 } else {

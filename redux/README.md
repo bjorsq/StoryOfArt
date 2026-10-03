@@ -29,6 +29,7 @@ Serve this folder (e.g. `npx http-server .`) and open `index.html`.
 * `?t=2h15m` starts at that point (or plain seconds)
 * `?debug` shows the time
 * space pauses, left and right arrows skip 10 seconds (60 with shift)
+* f, or the button at the top right, toggles fullscreen. The button and the mouse pointer appear when the mouse moves, and hide again after 3 seconds
 
 The piece loops, as it did at the Tate.
 
@@ -71,8 +72,8 @@ At 1920x1080 each job renders about 16 frames per second, so the piece (about 1 
 Notes on fidelity
 -----------------
 
-* **Font**: the embedded "pm" font has Arial's PANOSE number, metrics and glyph widths, so the player uses Arial, falling back to Liberation Sans or Arimo, which have the same metrics (so lines wrap identically).
+* **Font**: the embedded "pm" font has Arial's PANOSE number, metrics and glyph widths: it's Arial converted to an SVG font. The extractor copies its glyphs into `timeline.json`, and the player draws each letter as a path, laying the text out with the font's advance widths, as the Adobe viewer did. This is what made the original scale smoothly: browser text is hinted to whole pixels, so as its size changes, letters and spaces jump a pixel at a time. (In a test of the zoom in, browser text stayed frozen for 8 of 39 frame steps and then jumped; the paths changed in every frame.) The font-size animation becomes a scale transform about each box's anchor point, which is equivalent because everything in a box is measured in ems.
 * **Colour**: the original set no colours, so it was black text on the viewer's default white background.
 * **Font size**: the layout assumed 1em = 12px (the Adobe viewer's default), so the player sets that explicitly.
-* **Last line of a paragraph**: `TextSpline` doubled the offset used to left-align the last line, which must have been halved by the Adobe viewer. Modern browsers apply it in full, so the player uses the single offset (`StoryOfArt.lastLineShift`), which gives the intended left alignment.
+* **Last line of a paragraph**: `TextSpline` doubled the offset used to left-align the last line, which must have been halved by the Adobe viewer. The player places the last line where it was intended to go, aligned with the left edge of the justified lines (less 1px, as in the original).
 * **Joins between files**: the original loaded the next file when a file's last box finished. The player treats the eight files as one continuous sequence, so there are no gaps for loading.
