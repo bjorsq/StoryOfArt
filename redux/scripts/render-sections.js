@@ -13,6 +13,11 @@
  * Usage:
  *   node scripts/render-sections.js --list
  *   node scripts/render-sections.js [--jobs 4] [--fps 30] [--width 1440] [--aspect 5:3] [--only 1,5-8]
+ *   node scripts/render-sections.js --posters [--width 1440] [--aspect 5:3] [--only 1,5-8]
+ *
+ * --posters renders a still for each section (e.g. 23-perspective.png, to use
+ * as the video's poster image) at the moment its heading comes to rest in the
+ * centre of the screen. The introduction uses its first sentence.
  *
  * Other options (e.g. --crf) are passed to capture.js.
  */
@@ -28,8 +33,8 @@ const opts = { jobs: String(Math.max(1, Math.floor(os.cpus().length / 3))), fps:
 const argv = process.argv.slice(2);
 for (let i = 0; i < argv.length; i++) {
     const key = argv[i].replace(/^--/, '');
-    if (key === 'list') {
-        opts.list = true;
+    if (key === 'list' || key === 'posters') {
+        opts[key] = true;
     } else {
         opts[key] = argv[++i];
     }
@@ -39,10 +44,12 @@ const outDir = path.resolve(ROOT, opts.out);
 
 /* sections start at each heading - section headings are the boxes which exit upwards */
 const slug = str => str.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const starts = [{ title: 'Introduction', start: 0 }];
+/* poster: the moment the heading (or the first sentence) is at rest, at the end of its zoom in */
+const first = timeline.boxes[0];
+const starts = [{ title: 'Introduction', start: 0, poster: first.start + first.in }];
 timeline.boxes.forEach(box => {
     if (box.exit < 0) {
-        starts.push({ title: box.text, start: box.start });
+        starts.push({ title: box.text, start: box.start, poster: box.start + box.in });
     }
 });
 const sections = starts.map((s, i) => {
@@ -53,6 +60,7 @@ const sections = starts.map((s, i) => {
         title: s.title,
         start: s.start,
         end,
+        poster: s.poster,
         /* frame range on the piece's frame grid: [first, last) */
         frames: [Math.round(s.start / 1000 * fps), Math.round(end / 1000 * fps)],
         file: `${n}-${slug(s.title)}.mp4`,
@@ -79,8 +87,31 @@ if (opts.list) {
 }
 
 fs.mkdirSync(outDir, { recursive: true });
+
+if (opts.posters) {
+    /* one capture process renders all the stills, which are then renamed to match the videos */
+    const wanted = sections.filter(s => selected(s.n));
+    const tmp = path.join(outDir, '.posters');
+    const child = spawn(process.execPath, [
+        path.join(__dirname, 'capture.js'),
+        '--stills', wanted.map(s => String(s.poster / 1000)).join(','),
+        '--width', opts.width,
+        '--aspect', opts.aspect,
+        '--out', path.relative(ROOT, tmp),
+    ], { cwd: ROOT, stdio: 'inherit' });
+    child.on('close', code => {
+        if (code !== 0) process.exit(code);
+        wanted.forEach(s => {
+            fs.renameSync(path.join(tmp, `still-${s.poster / 1000}.png`), path.join(outDir, s.file.replace(/\.mp4$/, '.png')));
+        });
+        fs.rmSync(tmp, { recursive: true, force: true });
+        console.log(`${wanted.length} posters written to ${path.relative(ROOT, outDir)}`);
+    });
+    return;
+}
+
 const passthrough = Object.entries(opts)
-    .filter(([key]) => !['jobs', 'fps', 'width', 'aspect', 'out', 'only'].includes(key))
+    .filter(([key]) => !['jobs', 'fps', 'width', 'aspect', 'out', 'only', 'posters'].includes(key))
     .flatMap(([key, value]) => ['--' + key, value]);
 const todo = sections.filter(s => selected(s.n) && !fs.existsSync(path.join(outDir, s.file)));
 const totalFrames = todo.reduce((n, s) => n + s.frames[1] - s.frames[0], 0);
@@ -133,6 +164,7 @@ function render(section) {
     /* section index, and a concat list once every section exists */
     fs.writeFileSync(path.join(outDir, 'sections.json'), JSON.stringify(sections.map(s => ({
         n: s.n, title: s.title, start: formatTime(s.start), duration: formatTime(s.end - s.start), file: s.file,
+        poster: s.file.replace(/\.mp4$/, '.png'), posterTime: formatTime(s.poster),
     })), null, 1));
     const missing = sections.filter(s => !fs.existsSync(path.join(outDir, s.file)));
     if (!missing.length) {
