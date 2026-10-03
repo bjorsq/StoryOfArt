@@ -60,7 +60,7 @@ Files go to `output/sections/`, e.g. `23-perspective.mp4`. Each section is rende
 ffmpeg -f concat -safe 0 -i output/sections/concat.txt -c copy output/story-of-art.mp4
 ```
 
-`--posters` renders a still for each section instead (e.g. `23-perspective.png`, to use as the video's poster image), at the moment its heading comes to rest in the centre of the screen; the introduction uses its first sentence. Use the same `--width` and `--aspect` as the videos.
+`--posters` renders a still for each section instead (e.g. `23-perspective.png`, to use as the video's poster image). It's taken as the heading leaves the screen, at the moment it has grown to three times its resting size, which reads better as a thumbnail than the heading at rest. `--poster-scale` changes this (`--poster-scale 1` is the heading at rest in the centre). The introduction uses its first sentence, at no more than twice its resting size so that it fits. Use the same `--width` and `--aspect` as the videos.
 
 ```
 node scripts/render-sections.js --posters --width 1920 --aspect 16:9

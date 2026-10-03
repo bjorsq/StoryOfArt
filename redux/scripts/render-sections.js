@@ -16,8 +16,10 @@
  *   node scripts/render-sections.js --posters [--width 1440] [--aspect 5:3] [--only 1,5-8]
  *
  * --posters renders a still for each section (e.g. 23-perspective.png, to use
- * as the video's poster image) at the moment its heading comes to rest in the
- * centre of the screen. The introduction uses its first sentence.
+ * as the video's poster image) as its heading leaves the screen, at the moment
+ * it has grown to --poster-scale times its resting size (default 3; 1 is the
+ * heading at rest in the centre of the screen). The introduction uses its
+ * first sentence, at no more than twice its resting size so that it fits.
  *
  * Other options (e.g. --crf) are passed to capture.js.
  */
@@ -44,12 +46,15 @@ const outDir = path.resolve(ROOT, opts.out);
 
 /* sections start at each heading - section headings are the boxes which exit upwards */
 const slug = str => str.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-/* poster: the moment the heading (or the first sentence) is at rest, at the end of its zoom in */
+/* poster: the moment the heading (or the first sentence) has grown to --poster-scale times its resting size */
+const posterScale = parseFloat(opts['poster-scale'] || 3);
+const posterTime = (box, scale) => box.start + box.in + (box.pause || 0) + zoomOutAt(box, scale) * box.out;
 const first = timeline.boxes[0];
-const starts = [{ title: 'Introduction', start: 0, poster: first.start + first.in }];
+/* the introduction's first sentence is much wider than a heading, so it's kept small enough to fit the screen */
+const starts = [{ title: 'Introduction', start: 0, poster: posterTime(first, Math.min(posterScale, 2)) }];
 timeline.boxes.forEach(box => {
     if (box.exit < 0) {
-        starts.push({ title: box.text, start: box.start, poster: box.start + box.in });
+        starts.push({ title: box.text, start: box.start, poster: posterTime(box, posterScale) });
     }
 });
 const sections = starts.map((s, i) => {
@@ -66,6 +71,24 @@ const sections = starts.map((s, i) => {
         file: `${n}-${slug(s.title)}.mp4`,
     };
 });
+
+/**
+ * How far through a box's zoom out (0-1) it reaches a given scale - the zoom
+ * out goes from 1em to 20em, eased by the original keySplines
+ */
+function zoomOutAt(box, scale) {
+    if (scale <= 1) return 0;
+    const [x1, y1, x2, y2] = timeline.splines[box.splines][2];
+    const bezier = (a, b, t) => 3 * a * t * (1 - t) ** 2 + 3 * b * t * t * (1 - t) + t ** 3;
+    const target = (Math.min(scale, 20) - 1) / 19;
+    /* find the bezier parameter for the target value, then the time fraction (x) at that parameter */
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 50; i++) {
+        const mid = (lo + hi) / 2;
+        if (bezier(y1, y2, mid) < target) lo = mid; else hi = mid;
+    }
+    return bezier(x1, x2, (lo + hi) / 2);
+}
 
 function formatTime(ms) {
     const s = Math.round(ms / 1000);
@@ -111,7 +134,7 @@ if (opts.posters) {
 }
 
 const passthrough = Object.entries(opts)
-    .filter(([key]) => !['jobs', 'fps', 'width', 'aspect', 'out', 'only', 'posters'].includes(key))
+    .filter(([key]) => !['jobs', 'fps', 'width', 'aspect', 'out', 'only', 'posters', 'poster-scale'].includes(key))
     .flatMap(([key, value]) => ['--' + key, value]);
 const todo = sections.filter(s => selected(s.n) && !fs.existsSync(path.join(outDir, s.file)));
 const totalFrames = todo.reduce((n, s) => n + s.frames[1] - s.frames[0], 0);
