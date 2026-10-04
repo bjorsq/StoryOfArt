@@ -1,820 +1,1246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Story of Art &ndash; Emma Kay</title>
-<meta name="description" content="The Story of Art, an animated text projection by Emma Kay, made with e-2 and shown at Tate Modern. 108,812 words written from memory, over 9h 30m.">
-<style>
-:root {
-    --text: #000;
-    --muted: #555;
-    --line: #ddd;
-    --panel: #f4f4f4;
-    --link: #000;
-    color-scheme: light;
-}
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-    margin: 0;
-    background: #fff;
-    color: var(--text);
-    font: 16px/1.5 Arial, "Liberation Sans", Arimo, Helvetica, sans-serif;
-}
-a { color: var(--link); }
-a:focus-visible, button:focus-visible, video:focus-visible { outline: 2px solid #000; outline-offset: 3px; }
-.page { max-width: 1280px; margin: 0 auto; padding: 0 16px; }
-header { padding: 64px 0 32px; }
-h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; margin: 0 0 8px; font-weight: normal; letter-spacing: -0.01em; }
-.byline { margin: 0; color: var(--muted); font-size: 1.125rem; }
-.intro { max-width: 46em; }
-.intro p { margin: 0 0 1em; }
-@media (min-width: 600px) {
-    .intro p { text-align: justify; hyphens: auto; }
-}
-.play {
-    display: inline-block;
-    margin: 8px 0 0;
-    padding: 12px 20px;
-    border: 1px solid #000;
-    color: #000;
-    text-decoration: none;
-    font-size: 1.125rem;
-}
-.play:hover { background: #000; color: #fff; }
-.play-note { color: var(--muted); font-size: 0.875rem; margin: 8px 0 0; }
-main {
-    padding: 48px 0 16px;
-    border-top: 1px solid var(--line);
-    margin-top: 48px;
-}
-/* the information, below the videos: its groups side by side, stacking on narrow screens */
-aside {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-    gap: 24px 32px;
-    background: var(--panel);
-    padding: 20px;
-    margin: 0 0 48px;
-    font-size: 0.875rem;
-}
-aside h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 8px; color: var(--muted); font-weight: bold; }
-aside dl { margin: 0; }
-aside dl div { display: grid; grid-template-columns: 9em 1fr; gap: 8px; padding: 4px 0; border-top: 1px solid var(--line); }
-aside dt { color: var(--muted); }
-aside dd { margin: 0; font-variant-numeric: tabular-nums; }
-main h2 { font-size: 1.5rem; font-weight: normal; margin: 0 0 16px; }
-.video { margin: 0 0 32px; }
-.video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #fff; border: 1px solid var(--line); }
-.video figcaption { padding-top: 8px; font-size: 0.875rem; color: var(--muted); }
-.video figcaption p { margin: 0; font-variant-numeric: tabular-nums; }
-.video h3 { font-size: 1rem; color: var(--text); margin: 0 0 2px; font-weight: bold; }
-.video h3 .n { display: inline-block; min-width: 1.75em; color: var(--muted); font-weight: normal; }
-.video-full { margin-bottom: 48px; }
-.video-full figcaption { font-size: 1rem; }
-.sections { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 0 24px; }
-footer { border-top: 1px solid var(--line); padding: 24px 0 48px; color: var(--muted); font-size: 0.875rem; }
-@media (max-width: 480px) {
-    header { padding-top: 40px; }
-    aside dl div { grid-template-columns: 1fr; gap: 0; }
-}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Story of Art &ndash; Emma Kay</title>
+    <meta name="description"
+        content="The Story of Art, an animated text projection by Emma Kay, made with e-2 and shown at Tate Modern. 108,812 words written from memory, over 9h 30m.">
+    <style>
+        :root {
+            --text: #000;
+            --muted: #555;
+            --line: #ddd;
+            --panel: #f4f4f4;
+            --link: #000;
+            color-scheme: light;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--text);
+            font: 16px/1.5 Arial, "Liberation Sans", Arimo, Helvetica, sans-serif;
+        }
+
+        a {
+            color: var(--link);
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        video:focus-visible {
+            outline: 2px solid #000;
+            outline-offset: 3px;
+        }
+
+        .page {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        header {
+            padding: 64px 0 32px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.1;
+            margin: 0 0 8px;
+            font-weight: normal;
+            letter-spacing: -0.01em;
+        }
+
+        .byline {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1.125rem;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            .intro-text {
+                flex: 1;
+                max-width: 46em;
+                p {
+                    margin: 0 0 1em;
+                }
+            }
+            .intro-player {
+                flex: 1;
+            }
+        }
+        @media (min-width: 600px) {
+            .intro {
+                flex-direction: row;
+                gap: 32px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .intro p {
+                text-align: justify;
+                hyphens: auto;
+            }
+        }
+
+        .play {
+            display: inline-block;
+            margin: 8px 0 0;
+            padding: 12px 20px;
+            border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-size: 1.125rem;
+        }
+
+        .play:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .play-note {
+            color: var(--muted);
+            font-size: 0.875rem;
+            margin: 8px 0 0;
+        }
+
+        main {
+            padding: 48px 0 16px;
+            border-top: 1px solid var(--line);
+            margin-top: 48px;
+        }
+
+        /* the information, below the videos: its groups side by side, stacking on narrow screens */
+        aside {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+            gap: 24px 32px;
+            background: var(--panel);
+            padding: 20px;
+            margin: 0 0 48px;
+            font-size: 0.875rem;
+        }
+
+        aside h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 8px;
+            color: var(--muted);
+            font-weight: bold;
+        }
+
+        aside dl {
+            margin: 0;
+        }
+
+        aside dl div {
+            display: grid;
+            grid-template-columns: 9em 1fr;
+            gap: 8px;
+            padding: 4px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        aside dt {
+            color: var(--muted);
+        }
+
+        aside dd {
+            margin: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        main h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin: 0 0 16px;
+        }
+
+        .video {
+            margin: 0 0 32px;
+        }
+
+        .video video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            background: #fff;
+            border: 1px solid var(--line);
+        }
+
+        .video figcaption {
+            padding-top: 8px;
+            font-size: 0.875rem;
+            color: var(--muted);
+        }
+
+        .video figcaption p {
+            margin: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .video h3 {
+            font-size: 1rem;
+            color: var(--text);
+            margin: 0 0 2px;
+            font-weight: bold;
+        }
+
+        .video h3 .n {
+            display: inline-block;
+            min-width: 1.75em;
+            color: var(--muted);
+            font-weight: normal;
+        }
+
+        .video-full {
+            margin-bottom: 48px;
+        }
+
+        .video-full figcaption {
+            font-size: 1rem;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+            gap: 0 24px;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 24px 0 48px;
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding-top: 40px;
+            }
+
+            aside dl div {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="page">
-<header>
-<h1>The Story of Art</h1>
-<p class="byline">Emma Kay, made with e-2</p>
-</header>
-<div class="intro">
-<p>Emma Kay&rsquo;s work reconstructs epic histories, geographies and fictions entirely from memory. <em>The Story of Art</em> is her history of art, from the first marks made by humans to the end of the twentieth century, written from memory in 108,812 words.</p>
-<p>It is an animated wall projection. Sentences, wrapped into short justified paragraphs, travel towards the viewer from a point just above the centre of the screen, rest there briefly, then accelerate past, off the bottom of the screen; each section heading leaves by the top. The piece speeds up imperceptibly over 9 and a half hours, from a new paragraph every 10s to one every 0.60s, until only the occasional word can be read.</p>
-<p>It was projected 25 feet wide at Tate Modern, London, where it looped continuously for 11 months, and then shown at the Power Plant, Toronto. e-2 made it in SVG, so that the artist&rsquo;s text could be edited up to the last minute and the whole piece regenerated in a single step, and so that the text stayed sharp at that scale.</p>
-<p>The original ran in Adobe&rsquo;s SVG Viewer, a browser plugin which no longer exists. In 2026 it was redeveloped from the original files to run in a modern browser, drawing the letters with the same embedded font, and rendered to video.</p>
-<a class="play" href="player.html">Watch it in your browser</a>
-<p class="play-note">The browser version plays the whole piece in real time and loops. Space pauses, the arrow keys skip, F goes fullscreen, and the camera button saves a screenshot.</p>
-</div>
-<main>
-<h2>The full piece</h2>
+    <div class="page">
+        <header>
+            <h1>The Story of Art</h1>
+            <p class="byline">Emma Kay, made with e-2</p>
+        </header>
+        <div class="intro">
+            <div class="intro-text">
+                <p>Emma Kay&rsquo;s work reconstructs epic histories, geographies and fictions entirely from memory. <em>The
+                        Story of Art</em> is her history of art, from the first marks made by humans to the end of the
+                    twentieth century, written from memory in 108,812 words.</p>
+                <p>It is an animated wall projection. Sentences, wrapped into short justified paragraphs, travel towards the
+                    viewer from a point just above the centre of the screen, rest there briefly, then accelerate past, off
+                    the bottom of the screen; each section heading leaves by the top. The piece speeds up imperceptibly over
+                    9 and a half hours, from a new paragraph every 10s to one every 0.60s, until only the occasional word
+                    can be read.</p>
+                <p>It was projected 25 feet wide at Tate Modern, London, where it looped continuously for 11 months, and
+                    then shown at the Power Plant, Toronto. e-2 made it in SVG, so that the artist&rsquo;s text could be
+                    edited up to the last minute and the whole piece regenerated in a single step, and so that the text
+                    stayed sharp at that scale.</p>
+                <p>The original ran in Adobe&rsquo;s SVG Viewer, a browser plugin which no longer exists. In 2026 it was
+                    redeveloped from the original files to run in a modern browser, drawing the letters with the same
+                    embedded font, and rendered to video.</p>
+            </div>
+            <div class="intro-player">
+                <a class="play" href="player.html">Watch it in your browser</a>
+                <p class="play-note">The browser version plays the whole piece in real time and loops. Space pauses, the
+                arrow keys skip, F goes fullscreen, and the camera button saves a screenshot.</p>
+            </div>
+        </div>
 
-<figure class="video video-full">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/01-the-story-of-art.png" width="1920" height="1080" aria-label="The Story of Art, full version">
-<source src="https://media.bjorsq.net/soa/story-of-art.mp4" type="video/mp4">
-</video>
-<figcaption><p>9h 30m &middot; 1,026,433 frames &middot; 3.89 GB</p></figcaption>
-</figure>
-<h2>Sections</h2>
-<p class="play-note" style="margin:-8px 0 24px">The piece in 72 parts, split at its section headings.</p>
-<div class="sections">
+        <main>
+            <h2>The full piece</h2>
 
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/00-introduction.png" width="1920" height="1080" aria-label="The Story of Art: Introduction">
-<source src="https://media.bjorsq.net/soa/00-introduction.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n"></span> Introduction</h3>
-<p>From 0:00:00 &middot; 1m 30s &middot; 9 boxes &middot; 138 words</p>
-<p>10s a box &middot; 2,700 frames &middot; 7 MB &middot; rendered in 3m 09s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/01-the-story-of-art.png" width="1920" height="1080" aria-label="The Story of Art: The Story of Art">
-<source src="https://media.bjorsq.net/soa/01-the-story-of-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">1</span> The Story of Art</h3>
-<p>From 0:01:30 &middot; 6m 57s &middot; 7 boxes &middot; 136 words</p>
-<p>60s to 59s a box &middot; 12,496 frames &middot; 37 MB &middot; rendered in 14m 33s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/02-prehistoric-art.png" width="1920" height="1080" aria-label="The Story of Art: Prehistoric Art">
-<source src="https://media.bjorsq.net/soa/02-prehistoric-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">2</span> Prehistoric Art</h3>
-<p>From 0:08:27 &middot; 12m 32s &middot; 13 boxes &middot; 227 words</p>
-<p>58.8s to 56.9s a box &middot; 22,559 frames &middot; 67 MB &middot; rendered in 26m 06s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/03-the-stone-age.png" width="1920" height="1080" aria-label="The Story of Art: The Stone Age">
-<source src="https://media.bjorsq.net/soa/03-the-stone-age.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">3</span> The Stone Age</h3>
-<p>From 0:20:59 &middot; 9m 19s &middot; 10 boxes &middot; 191 words</p>
-<p>56.7s to 55.2s a box &middot; 16,782 frames &middot; 54 MB &middot; rendered in 19m 26s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/04-the-iron-age.png" width="1920" height="1080" aria-label="The Story of Art: The Iron Age">
-<source src="https://media.bjorsq.net/soa/04-the-iron-age.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">4</span> The Iron Age</h3>
-<p>From 0:30:18 &middot; 6m 22s &middot; 7 boxes &middot; 105 words</p>
-<p>55s to 54s a box &middot; 11,451 frames &middot; 29 MB &middot; rendered in 13m 12s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/05-aboriginal-art.png" width="1920" height="1080" aria-label="The Story of Art: Aboriginal Art">
-<source src="https://media.bjorsq.net/soa/05-aboriginal-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">5</span> Aboriginal Art</h3>
-<p>From 0:36:40 &middot; 7m 06s &middot; 8 boxes &middot; 120 words</p>
-<p>53.9s to 52.7s a box &middot; 12,789 frames &middot; 36 MB &middot; rendered in 14m 48s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/06-the-bronze-age.png" width="1920" height="1080" aria-label="The Story of Art: The Bronze Age">
-<source src="https://media.bjorsq.net/soa/06-the-bronze-age.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">6</span> The Bronze Age</h3>
-<p>From 0:43:46 &middot; 2m 37s &middot; 3 boxes &middot; 45 words</p>
-<p>52.5s to 52.2s a box &middot; 4,714 frames &middot; 12 MB &middot; rendered in 5m 27s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/07-early-civilisations.png" width="1920" height="1080" aria-label="The Story of Art: Early Civilisations">
-<source src="https://media.bjorsq.net/soa/07-early-civilisations.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">7</span> Early Civilisations</h3>
-<p>From 0:46:23 &middot; 13m 33s &middot; 16 boxes &middot; 296 words</p>
-<p>52s to 49.6s a box &middot; 24,385 frames &middot; 81 MB &middot; rendered in 28m 23s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/08-tribal-art.png" width="1920" height="1080" aria-label="The Story of Art: Tribal Art">
-<source src="https://media.bjorsq.net/soa/08-tribal-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">8</span> Tribal Art</h3>
-<p>From 0:59:56 &middot; 6m 31s &middot; 8 boxes &middot; 152 words</p>
-<p>49.4s to 48.2s a box &middot; 11,715 frames &middot; 38 MB &middot; rendered in 13m 41s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/09-empires.png" width="1920" height="1080" aria-label="The Story of Art: Empires">
-<source src="https://media.bjorsq.net/soa/09-empires.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">9</span> Empires</h3>
-<p>From 1:06:26 &middot; 3m 59s &middot; 5 boxes &middot; 87 words</p>
-<p>48.1s to 47.4s a box &middot; 7,160 frames &middot; 22 MB &middot; rendered in 8m 17s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/10-art-and-religion.png" width="1920" height="1080" aria-label="The Story of Art: Art and Religion">
-<source src="https://media.bjorsq.net/soa/10-art-and-religion.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">10</span> Art and Religion</h3>
-<p>From 1:10:25 &middot; 9m 16s &middot; 12 boxes &middot; 186 words</p>
-<p>47.2s to 45.4s a box &middot; 16,677 frames &middot; 46 MB &middot; rendered in 19m 09s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/11-early-written-text.png" width="1920" height="1080" aria-label="The Story of Art: Early Written Text">
-<source src="https://media.bjorsq.net/soa/11-early-written-text.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">11</span> Early Written Text</h3>
-<p>From 1:19:41 &middot; 4m 29s &middot; 6 boxes &middot; 119 words</p>
-<p>45.3s to 44.4s a box &middot; 8,071 frames &middot; 26 MB &middot; rendered in 9m 24s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/12-egyptian-art.png" width="1920" height="1080" aria-label="The Story of Art: Egyptian Art">
-<source src="https://media.bjorsq.net/soa/12-egyptian-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">12</span> Egyptian Art</h3>
-<p>From 1:24:10 &middot; 8m 40s &middot; 12 boxes &middot; 226 words</p>
-<p>44.3s to 42.4s a box &middot; 15,603 frames &middot; 51 MB &middot; rendered in 18m 07s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/13-etruscan-art.png" width="1920" height="1080" aria-label="The Story of Art: Etruscan Art">
-<source src="https://media.bjorsq.net/soa/13-etruscan-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">13</span> Etruscan Art</h3>
-<p>From 1:32:50 &middot; 1m 24s &middot; 2 boxes &middot; 14 words</p>
-<p>42.3s to 42.1s a box &middot; 2,531 frames &middot; 4 MB &middot; rendered in 2m 56s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/14-byzantine-art.png" width="1920" height="1080" aria-label="The Story of Art: Byzantine Art">
-<source src="https://media.bjorsq.net/soa/14-byzantine-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">14</span> Byzantine Art</h3>
-<p>From 1:34:14 &middot; 2m 05s &middot; 3 boxes &middot; 37 words</p>
-<p>41.9s to 41.6s a box &middot; 3,759 frames &middot; 9 MB &middot; rendered in 4m 22s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/15-greco-roman-art.png" width="1920" height="1080" aria-label="The Story of Art: Greco Roman Art">
-<source src="https://media.bjorsq.net/soa/15-greco-roman-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">15</span> Greco Roman Art</h3>
-<p>From 1:36:20 &middot; 13m 17s &middot; 20 boxes &middot; 412 words</p>
-<p>41.4s to 38.3s a box &middot; 23,917 frames &middot; 84 MB &middot; rendered in 28m 03s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/16-islamic-art.png" width="1920" height="1080" aria-label="The Story of Art: Islamic Art">
-<source src="https://media.bjorsq.net/soa/16-islamic-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">16</span> Islamic Art</h3>
-<p>From 1:49:37 &middot; 4m 23s &middot; 7 boxes &middot; 138 words</p>
-<p>38.1s to 37.1s a box &middot; 7,901 frames &middot; 27 MB &middot; rendered in 9m 14s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/17-chinese-art.png" width="1920" height="1080" aria-label="The Story of Art: Chinese Art">
-<source src="https://media.bjorsq.net/soa/17-chinese-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">17</span> Chinese Art</h3>
-<p>From 1:54:00 &middot; 6m 37s &middot; 11 boxes &middot; 181 words</p>
-<p>37s to 35.3s a box &middot; 11,924 frames &middot; 37 MB &middot; rendered in 13m 51s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/18-japanese-art.png" width="1920" height="1080" aria-label="The Story of Art: Japanese Art">
-<source src="https://media.bjorsq.net/soa/18-japanese-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">18</span> Japanese Art</h3>
-<p>From 2:00:38 &middot; 6m 51s &middot; 12 boxes &middot; 222 words</p>
-<p>35.1s to 33.3s a box &middot; 12,321 frames &middot; 41 MB &middot; rendered in 14m 21s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/19-christian-art.png" width="1920" height="1080" aria-label="The Story of Art: Christian Art">
-<source src="https://media.bjorsq.net/soa/19-christian-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">19</span> Christian Art</h3>
-<p>From 2:07:29 &middot; 9m 31s &middot; 18 boxes &middot; 405 words</p>
-<p>33.1s to 30.3s a box &middot; 17,140 frames &middot; 63 MB &middot; rendered in 19m 59s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/20-medieval-art.png" width="1920" height="1080" aria-label="The Story of Art: Medieval Art">
-<source src="https://media.bjorsq.net/soa/20-medieval-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">20</span> Medieval Art</h3>
-<p>From 2:17:00 &middot; 19m 02s &middot; 40 boxes &middot; 731 words</p>
-<p>30s to 27.1s a box &middot; 34,262 frames &middot; 113 MB &middot; rendered in 39m 35s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/21-the-renaissance.png" width="1920" height="1080" aria-label="The Story of Art: The Renaissance">
-<source src="https://media.bjorsq.net/soa/21-the-renaissance.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">21</span> The Renaissance</h3>
-<p>From 2:36:02 &middot; 6m 38s &middot; 15 boxes &middot; 296 words</p>
-<p>27s to 26s a box &middot; 11,930 frames &middot; 40 MB &middot; rendered in 13m 51s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/22-the-age-of-patronage.png" width="1920" height="1080" aria-label="The Story of Art: The Age of Patronage">
-<source src="https://media.bjorsq.net/soa/22-the-age-of-patronage.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">22</span> The Age of Patronage</h3>
-<p>From 2:42:40 &middot; 3m 51s &middot; 9 boxes &middot; 173 words</p>
-<p>25.9s to 25.3s a box &middot; 6,917 frames &middot; 23 MB &middot; rendered in 8m 03s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/23-perspective.png" width="1920" height="1080" aria-label="The Story of Art: Perspective">
-<source src="https://media.bjorsq.net/soa/23-perspective.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">23</span> Perspective</h3>
-<p>From 2:46:30 &middot; 41m 23s &middot; 119 boxes &middot; 2,095 words</p>
-<p>25.3s to 16.5s a box &middot; 74,493 frames &middot; 241 MB &middot; rendered in 1h 25m</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/24-classical-realism.png" width="1920" height="1080" aria-label="The Story of Art: Classical Realism">
-<source src="https://media.bjorsq.net/soa/24-classical-realism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">24</span> Classical Realism</h3>
-<p>From 3:27:53 &middot; 4m 44s &middot; 18 boxes &middot; 397 words</p>
-<p>16.4s to 15.2s a box &middot; 8,521 frames &middot; 35 MB &middot; rendered in 9m 58s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/25-realism.png" width="1920" height="1080" aria-label="The Story of Art: Realism">
-<source src="https://media.bjorsq.net/soa/25-realism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">25</span> Realism</h3>
-<p>From 3:32:37 &middot; 5m 10s &middot; 21 boxes &middot; 448 words</p>
-<p>15s to 14.5s a box &middot; 9,289 frames &middot; 38 MB &middot; rendered in 10m 51s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/26-the-still-life.png" width="1920" height="1080" aria-label="The Story of Art: The Still Life">
-<source src="https://media.bjorsq.net/soa/26-the-still-life.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">26</span> The Still Life</h3>
-<p>From 3:37:47 &middot; 12m 51s &middot; 56 boxes &middot; 1,096 words</p>
-<p>14.5s to 13.1s a box &middot; 23,129 frames &middot; 91 MB &middot; rendered in 26m 46s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/27-dutch-painting.png" width="1920" height="1080" aria-label="The Story of Art: Dutch Painting">
-<source src="https://media.bjorsq.net/soa/27-dutch-painting.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">27</span> Dutch Painting</h3>
-<p>From 3:50:38 &middot; 8m 22s &middot; 40 boxes &middot; 804 words</p>
-<p>13s to 12.1s a box &middot; 15,056 frames &middot; 57 MB &middot; rendered in 17m 35s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/28-history-painting.png" width="1920" height="1080" aria-label="The Story of Art: History Painting">
-<source src="https://media.bjorsq.net/soa/28-history-painting.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">28</span> History Painting</h3>
-<p>From 3:59:00 &middot; 15m 13s &middot; 79 boxes &middot; 1,352 words</p>
-<p>12s to 11.1s a box &middot; 27,390 frames &middot; 93 MB &middot; rendered in 31m 24s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/29-the-sublime.png" width="1920" height="1080" aria-label="The Story of Art: The Sublime">
-<source src="https://media.bjorsq.net/soa/29-the-sublime.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">29</span> The Sublime</h3>
-<p>From 4:14:13 &middot; 8m 40s &middot; 48 boxes &middot; 852 words</p>
-<p>11.1s to 10.6s a box &middot; 15,603 frames &middot; 53 MB &middot; rendered in 17m 57s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/30-the-pre-raphaelites.png" width="1920" height="1080" aria-label="The Story of Art: The Pre Raphaelites">
-<source src="https://media.bjorsq.net/soa/30-the-pre-raphaelites.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">30</span> The Pre Raphaelites</h3>
-<p>From 4:22:53 &middot; 6m 43s &middot; 39 boxes &middot; 655 words</p>
-<p>10.6s to 10.1s a box &middot; 12,100 frames &middot; 40 MB &middot; rendered in 13m 56s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/31-orientalism.png" width="1920" height="1080" aria-label="The Story of Art: Orientalism">
-<source src="https://media.bjorsq.net/soa/31-orientalism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">31</span> Orientalism</h3>
-<p>From 4:29:36 &middot; 4m 00s &middot; 24 boxes &middot; 409 words</p>
-<p>10.1s to 9.9s a box &middot; 7,187 frames &middot; 25 MB &middot; rendered in 8m 17s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/32-realism.png" width="1920" height="1080" aria-label="The Story of Art: Realism">
-<source src="https://media.bjorsq.net/soa/32-realism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">32</span> Realism</h3>
-<p>From 4:33:36 &middot; 4m 50s &middot; 30 boxes &middot; 458 words</p>
-<p>9.8s to 9.5s a box &middot; 8,709 frames &middot; 25 MB &middot; rendered in 9m 58s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/33-the-invention-of-photography.png" width="1920" height="1080" aria-label="The Story of Art: The Invention of Photography">
-<source src="https://media.bjorsq.net/soa/33-the-invention-of-photography.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">33</span> The Invention of Photography</h3>
-<p>From 4:38:26 &middot; 10m 11s &middot; 67 boxes &middot; 1,340 words</p>
-<p>9.5s to 8.8s a box &middot; 18,341 frames &middot; 68 MB &middot; rendered in 21m 17s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/34-impressionism.png" width="1920" height="1080" aria-label="The Story of Art: Impressionism">
-<source src="https://media.bjorsq.net/soa/34-impressionism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">34</span> Impressionism</h3>
-<p>From 4:48:37 &middot; 5m 57s &middot; 42 boxes &middot; 848 words</p>
-<p>8.7s to 8.3s a box &middot; 10,718 frames &middot; 42 MB &middot; rendered in 12m 29s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/35-symbolism.png" width="1920" height="1080" aria-label="The Story of Art: Symbolism">
-<source src="https://media.bjorsq.net/soa/35-symbolism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">35</span> Symbolism</h3>
-<p>From 4:54:35 &middot; 8m 11s &middot; 62 boxes &middot; 1,097 words</p>
-<p>8.3s to 7.6s a box &middot; 14,722 frames &middot; 50 MB &middot; rendered in 17m 04s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/36-fauvism.png" width="1920" height="1080" aria-label="The Story of Art: Fauvism">
-<source src="https://media.bjorsq.net/soa/36-fauvism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">36</span> Fauvism</h3>
-<p>From 5:02:45 &middot; 30s &middot; 4 boxes &middot; 70 words</p>
-<p>7.6s to 7.5s a box &middot; 905 frames &middot; 3 MB &middot; rendered in 1m 05s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/37-cubism.png" width="1920" height="1080" aria-label="The Story of Art: Cubism">
-<source src="https://media.bjorsq.net/soa/37-cubism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">37</span> Cubism</h3>
-<p>From 5:03:16 &middot; 10m 54s &middot; 89 boxes &middot; 1,922 words</p>
-<p>7.5s to 7.2s a box &middot; 19,629 frames &middot; 81 MB &middot; rendered in 22m 55s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/38-early-twentieth-century-sculpture.png" width="1920" height="1080" aria-label="The Story of Art: Early Twentieth Century Sculpture">
-<source src="https://media.bjorsq.net/soa/38-early-twentieth-century-sculpture.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">38</span> Early Twentieth Century Sculpture</h3>
-<p>From 5:14:10 &middot; 5m 49s &middot; 49 boxes &middot; 1,039 words</p>
-<p>7.2s to 7s a box &middot; 10,464 frames &middot; 42 MB &middot; rendered in 12m 15s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/39-surrealism.png" width="1920" height="1080" aria-label="The Story of Art: Surrealism">
-<source src="https://media.bjorsq.net/soa/39-surrealism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">39</span> Surrealism</h3>
-<p>From 5:19:59 &middot; 4m 53s &middot; 42 boxes &middot; 881 words</p>
-<p>7s to 6.9s a box &middot; 8,778 frames &middot; 36 MB &middot; rendered in 10m 14s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/40-dada.png" width="1920" height="1080" aria-label="The Story of Art: Dada">
-<source src="https://media.bjorsq.net/soa/40-dada.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">40</span> Dada</h3>
-<p>From 5:24:51 &middot; 7m 01s &middot; 62 boxes &middot; 1,256 words</p>
-<p>6.9s to 6.7s a box &middot; 12,629 frames &middot; 51 MB &middot; rendered in 14m 43s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/41-futurism.png" width="1920" height="1080" aria-label="The Story of Art: Futurism">
-<source src="https://media.bjorsq.net/soa/41-futurism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">41</span> Futurism</h3>
-<p>From 5:31:52 &middot; 4m 18s &middot; 39 boxes &middot; 631 words</p>
-<p>6.7s to 6.6s a box &middot; 7,746 frames &middot; 27 MB &middot; rendered in 8m 57s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/42-early-photography.png" width="1920" height="1080" aria-label="The Story of Art: Early Photography">
-<source src="https://media.bjorsq.net/soa/42-early-photography.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">42</span> Early Photography</h3>
-<p>From 5:36:10 &middot; 1m 57s &middot; 18 boxes &middot; 307 words</p>
-<p>6.6s to 6.5s a box &middot; 3,523 frames &middot; 13 MB &middot; rendered in 4m 09s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/43-the-moving-image.png" width="1920" height="1080" aria-label="The Story of Art: The Moving Image">
-<source src="https://media.bjorsq.net/soa/43-the-moving-image.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">43</span> The Moving Image</h3>
-<p>From 5:38:08 &middot; 1m 37s &middot; 15 boxes &middot; 242 words</p>
-<p>6.5s to 6.4s a box &middot; 2,910 frames &middot; 10 MB &middot; rendered in 3m 26s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/44-the-bauhaus.png" width="1920" height="1080" aria-label="The Story of Art: The Bauhaus">
-<source src="https://media.bjorsq.net/soa/44-the-bauhaus.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">44</span> The Bauhaus</h3>
-<p>From 5:39:45 &middot; 1m 43s &middot; 16 boxes &middot; 294 words</p>
-<p>6.4s to 6.4s a box &middot; 3,081 frames &middot; 12 MB &middot; rendered in 3m 39s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/45-constructivism.png" width="1920" height="1080" aria-label="The Story of Art: Constructivism">
-<source src="https://media.bjorsq.net/soa/45-constructivism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">45</span> Constructivism</h3>
-<p>From 5:41:28 &middot; 57s &middot; 9 boxes &middot; 142 words</p>
-<p>6.4s to 6.4s a box &middot; 1,720 frames &middot; 6 MB &middot; rendered in 2m 03s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/46-suprematism.png" width="1920" height="1080" aria-label="The Story of Art: Suprematism">
-<source src="https://media.bjorsq.net/soa/46-suprematism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">46</span> Suprematism</h3>
-<p>From 5:42:25 &middot; 1m 54s &middot; 18 boxes &middot; 268 words</p>
-<p>6.4s to 6.3s a box &middot; 3,419 frames &middot; 11 MB &middot; rendered in 4m 00s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/47-german-expressionism.png" width="1920" height="1080" aria-label="The Story of Art: German Expressionism">
-<source src="https://media.bjorsq.net/soa/47-german-expressionism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">47</span> German Expressionism</h3>
-<p>From 5:44:19 &middot; 8m 55s &middot; 87 boxes &middot; 1,389 words</p>
-<p>6.3s to 6s a box &middot; 16,056 frames &middot; 54 MB &middot; rendered in 18m 35s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/48-the-st-ives-group.png" width="1920" height="1080" aria-label="The Story of Art: The St Ives Group">
-<source src="https://media.bjorsq.net/soa/48-the-st-ives-group.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">48</span> The St Ives Group</h3>
-<p>From 5:53:14 &middot; 3m 35s &middot; 36 boxes &middot; 687 words</p>
-<p>6s to 5.9s a box &middot; 6,444 frames &middot; 24 MB &middot; rendered in 7m 34s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/49-the-cobra-group.png" width="1920" height="1080" aria-label="The Story of Art: The Cobra Group">
-<source src="https://media.bjorsq.net/soa/49-the-cobra-group.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">49</span> The Cobra Group</h3>
-<p>From 5:56:49 &middot; 30s &middot; 5 boxes &middot; 49 words</p>
-<p>5.9s a box &middot; 888 frames &middot; 2 MB &middot; rendered in 1m 01s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/50-abstraction.png" width="1920" height="1080" aria-label="The Story of Art: Abstraction">
-<source src="https://media.bjorsq.net/soa/50-abstraction.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">50</span> Abstraction</h3>
-<p>From 5:57:18 &middot; 8m 10s &middot; 84 boxes &middot; 1,360 words</p>
-<p>5.9s to 5.8s a box &middot; 14,710 frames &middot; 50 MB &middot; rendered in 17m 00s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/51-abstract-expressionism.png" width="1920" height="1080" aria-label="The Story of Art: Abstract Expressionism">
-<source src="https://media.bjorsq.net/soa/51-abstract-expressionism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">51</span> Abstract Expressionism</h3>
-<p>From 6:05:29 &middot; 4m 23s &middot; 46 boxes &middot; 778 words</p>
-<p>5.8s to 5.7s a box &middot; 7,880 frames &middot; 28 MB &middot; rendered in 9m 14s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/52-minimalism.png" width="1920" height="1080" aria-label="The Story of Art: Minimalism">
-<source src="https://media.bjorsq.net/soa/52-minimalism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">52</span> Minimalism</h3>
-<p>From 6:09:51 &middot; 4m 35s &middot; 49 boxes &middot; 900 words</p>
-<p>5.7s to 5.6s a box &middot; 8,257 frames &middot; 31 MB &middot; rendered in 9m 34s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/53-towards-pop-art.png" width="1920" height="1080" aria-label="The Story of Art: Towards Pop Art">
-<source src="https://media.bjorsq.net/soa/53-towards-pop-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">53</span> Towards Pop Art</h3>
-<p>From 6:14:27 &middot; 3m 58s &middot; 43 boxes &middot; 846 words</p>
-<p>5.6s to 5.5s a box &middot; 7,128 frames &middot; 29 MB &middot; rendered in 8m 18s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/54-pop-art.png" width="1920" height="1080" aria-label="The Story of Art: Pop Art">
-<source src="https://media.bjorsq.net/soa/54-pop-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">54</span> Pop Art</h3>
-<p>From 6:18:24 &middot; 13m 15s &middot; 149 boxes &middot; 2,971 words</p>
-<p>5.5s to 5.2s a box &middot; 23,858 frames &middot; 96 MB &middot; rendered in 27m 44s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/55-conceptual-art.png" width="1920" height="1080" aria-label="The Story of Art: Conceptual Art">
-<source src="https://media.bjorsq.net/soa/55-conceptual-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">55</span> Conceptual Art</h3>
-<p>From 6:31:40 &middot; 6m 39s &middot; 78 boxes &middot; 1,676 words</p>
-<p>5.2s to 5s a box &middot; 11,967 frames &middot; 50 MB &middot; rendered in 13m 56s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/56-art-and-politics.png" width="1920" height="1080" aria-label="The Story of Art: Art and Politics">
-<source src="https://media.bjorsq.net/soa/56-art-and-politics.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">56</span> Art and Politics</h3>
-<p>From 6:38:18 &middot; 1m 25s &middot; 17 boxes &middot; 333 words</p>
-<p>5s to 5s a box &middot; 2,560 frames &middot; 11 MB &middot; rendered in 3m 02s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/57-the-situationist-international.png" width="1920" height="1080" aria-label="The Story of Art: The Situationist International">
-<source src="https://media.bjorsq.net/soa/57-the-situationist-international.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">57</span> The Situationist International</h3>
-<p>From 6:39:44 &middot; 50s &middot; 10 boxes &middot; 215 words</p>
-<p>5s to 5s a box &middot; 1,499 frames &middot; 7 MB &middot; rendered in 1m 48s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/58-performance-art.png" width="1920" height="1080" aria-label="The Story of Art: Performance Art">
-<source src="https://media.bjorsq.net/soa/58-performance-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">58</span> Performance Art</h3>
-<p>From 6:40:34 &middot; 12m 06s &middot; 150 boxes &middot; 3,040 words</p>
-<p>5s to 4.7s a box &middot; 21,765 frames &middot; 89 MB &middot; rendered in 25m 15s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/59-experimental-film.png" width="1920" height="1080" aria-label="The Story of Art: Experimental Film">
-<source src="https://media.bjorsq.net/soa/59-experimental-film.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">59</span> Experimental Film</h3>
-<p>From 6:52:39 &middot; 23s &middot; 5 boxes &middot; 55 words</p>
-<p>4.7s a box &middot; 702 frames &middot; 2 MB &middot; rendered in 48s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/60-land-art.png" width="1920" height="1080" aria-label="The Story of Art: Land Art">
-<source src="https://media.bjorsq.net/soa/60-land-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">60</span> Land Art</h3>
-<p>From 6:53:03 &middot; 2m 01s &middot; 26 boxes &middot; 502 words</p>
-<p>4.7s to 4.6s a box &middot; 3,631 frames &middot; 14 MB &middot; rendered in 4m 16s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/61-site-specific-art.png" width="1920" height="1080" aria-label="The Story of Art: Site Specific Art">
-<source src="https://media.bjorsq.net/soa/61-site-specific-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">61</span> Site Specific Art</h3>
-<p>From 6:55:04 &middot; 1m 41s &middot; 22 boxes &middot; 399 words</p>
-<p>4.6s to 4.6s a box &middot; 3,039 frames &middot; 12 MB &middot; rendered in 3m 36s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/62-figurative-painting.png" width="1920" height="1080" aria-label="The Story of Art: Figurative Painting">
-<source src="https://media.bjorsq.net/soa/62-figurative-painting.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">62</span> Figurative Painting</h3>
-<p>From 6:56:45 &middot; 9m 22s &middot; 126 boxes &middot; 2,274 words</p>
-<p>4.6s to 4.3s a box &middot; 16,864 frames &middot; 65 MB &middot; rendered in 19m 29s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/63-early-twentieth-century-sculpture.png" width="1920" height="1080" aria-label="The Story of Art: Early Twentieth Century Sculpture">
-<source src="https://media.bjorsq.net/soa/63-early-twentieth-century-sculpture.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">63</span> Early Twentieth Century Sculpture</h3>
-<p>From 7:06:07 &middot; 11m 49s &middot; 170 boxes &middot; 3,181 words</p>
-<p>4.3s to 4s a box &middot; 21,268 frames &middot; 86 MB &middot; rendered in 24m 42s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/64-postmodernism.png" width="1920" height="1080" aria-label="The Story of Art: Postmodernism">
-<source src="https://media.bjorsq.net/soa/64-postmodernism.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">64</span> Postmodernism</h3>
-<p>From 7:17:56 &middot; 52s &middot; 13 boxes &middot; 263 words</p>
-<p>4s to 4s a box &middot; 1,558 frames &middot; 7 MB &middot; rendered in 1m 53s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/65-activist-art.png" width="1920" height="1080" aria-label="The Story of Art: Activist Art">
-<source src="https://media.bjorsq.net/soa/65-activist-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">65</span> Activist Art</h3>
-<p>From 7:18:48 &middot; 52s &middot; 13 boxes &middot; 292 words</p>
-<p>4s a box &middot; 1,553 frames &middot; 8 MB &middot; rendered in 1m 53s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/66-photography.png" width="1920" height="1080" aria-label="The Story of Art: Photography">
-<source src="https://media.bjorsq.net/soa/66-photography.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">66</span> Photography</h3>
-<p>From 7:19:40 &middot; 5m 54s &middot; 90 boxes &middot; 1,750 words</p>
-<p>4s to 3.9s a box &middot; 10,612 frames &middot; 46 MB &middot; rendered in 12m 25s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/67-performance.png" width="1920" height="1080" aria-label="The Story of Art: Performance">
-<source src="https://media.bjorsq.net/soa/67-performance.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">67</span> Performance</h3>
-<p>From 7:25:34 &middot; 6m 31s &middot; 102 boxes &middot; 2,013 words</p>
-<p>3.9s to 3.8s a box &middot; 11,738 frames &middot; 52 MB &middot; rendered in 13m 42s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/68-installation-art.png" width="1920" height="1080" aria-label="The Story of Art: Installation Art">
-<source src="https://media.bjorsq.net/soa/68-installation-art.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">68</span> Installation Art</h3>
-<p>From 7:32:05 &middot; 9m 35s &middot; 155 boxes &middot; 2,937 words</p>
-<p>3.8s to 3.6s a box &middot; 17,249 frames &middot; 74 MB &middot; rendered in 20m 10s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/69-film-and-video.png" width="1920" height="1080" aria-label="The Story of Art: Film and Video">
-<source src="https://media.bjorsq.net/soa/69-film-and-video.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">69</span> Film and Video</h3>
-<p>From 7:41:40 &middot; 2m 14s &middot; 37 boxes &middot; 735 words</p>
-<p>3.6s to 3.6s a box &middot; 4,012 frames &middot; 17 MB &middot; rendered in 4m 42s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/70-sculpture.png" width="1920" height="1080" aria-label="The Story of Art: Sculpture">
-<source src="https://media.bjorsq.net/soa/70-sculpture.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">70</span> Sculpture</h3>
-<p>From 7:43:53 &middot; 11m 16s &middot; 193 boxes &middot; 3,795 words</p>
-<p>3.6s to 3.4s a box &middot; 20,274 frames &middot; 92 MB &middot; rendered in 23m 40s</p></figcaption>
-</figure>
-<figure class="video">
-<video controls preload="none" poster="https://media.bjorsq.net/soa/71-painting.png" width="1920" height="1080" aria-label="The Story of Art: Painting">
-<source src="https://media.bjorsq.net/soa/71-painting.mp4" type="video/mp4">
-</video>
-<figcaption>
-<h3><span class="n">71</span> Painting</h3>
-<p>From 7:55:09 &middot; 1h 35m &middot; 2,847 boxes &middot; 52,832 words</p>
-<p>3.4s to 0.60s a box &middot; 171,155 frames &middot; 847 MB &middot; rendered in 3h 18m</p></figcaption>
-</figure>
-</div>
-</main>
-<aside aria-label="About the piece and the videos">
+            <figure class="video video-full">
+                <video controls preload="none" poster="https://media.bjorsq.net/soa/01-the-story-of-art.png"
+                    width="1920" height="1080" aria-label="The Story of Art, full version">
+                    <source src="https://media.bjorsq.net/soa/story-of-art.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                    <p>9h 30m &middot; 1,026,433 frames &middot; 3.89 GB</p>
+                </figcaption>
+            </figure>
+            <h2>Sections</h2>
+            <p class="play-note" style="margin:-8px 0 24px">The piece in 72 parts, split at its section headings.</p>
+            <div class="sections">
 
-<section aria-labelledby="info-piece">
-<h2 id="info-piece">The piece</h2>
-<dl>
-<div><dt>Running time</dt><dd>9h 30m (9:30:14), looped</dd></div>
-<div><dt>Text boxes</dt><dd>5,812</dd></div>
-<div><dt>Sections</dt><dd>71, plus an introduction</dd></div>
-<div><dt>Words</dt><dd>108,812</dd></div>
-<div><dt>Characters</dt><dd>637,549</dd></div>
-<div><dt>Lines of text</dt><dd>11,326</dd></div>
-<div><dt>Letters drawn</dt><dd>534,549</dd></div>
-<div><dt>Longest box</dt><dd>104 words, 9 lines</dd></div>
-<div><dt>Halfway through the text</dt><dd>at 7:50:54: half the words come in the last 17% of the running time</dd></div>
-</dl>
-</section>
-<section aria-labelledby="info-speed">
-<h2 id="info-speed">Speed</h2>
-<dl>
-<div><dt>First box</dt><dd>5s in, 5s out (6 a minute)</dd></div>
-<div><dt>Slowest box</dt><dd>5s in, 55s out (&ldquo;The Story of Art&rdquo;)</dd></div>
-<div><dt>Last box</dt><dd>0.30s in, 0.30s out (100 a minute)</dd></div>
-<div><dt>Zoom in</dt><dd>font size 0 to 1em, moving 50px down to rest</dd></div>
-<div><dt>Zoom out</dt><dd>font size 1em to 20em, moving 950px down; section headings move 1300px up</dd></div>
-<div><dt>Easing</dt><dd>SMIL <code>keySplines</code>, two presets: one for text, one for headings</dd></div>
-<div><dt>Font</dt><dd>"pm", Arial converted to an SVG font; 83 of its 237 glyphs are used</dd></div>
-<div><dt>Text sizes</dt><dd>1.1, 1.2 and 1.3em (13.2 to 15.6px at rest), justified to 420px &times; size</dd></div>
-</dl>
-</section>
-<section aria-labelledby="info-original">
-<h2 id="info-original">The original</h2>
-<dl>
-<div><dt>Shown at</dt><dd>Tate Modern, London, where it looped for 11 months, then the Power Plant, Toronto</dd></div>
-<div><dt>Projection</dt><dd>25&prime; &times; 15&prime;, from a 1024 &times; 768 composition</dd></div>
-<div><dt>Format</dt><dd>SVG with SMIL animation and ECMAScript, in Adobe SVG Viewer 3</dd></div>
-<div><dt>Files</dt><dd>8 SVG files and a script, 8.3 MB; each file loaded the next</dd></div>
-<div><dt>Made with</dt><dd>a PHP and MySQL tool which turned the artist&rsquo;s text into SVG</dd></div>
-<div><dt>Computer</dt><dd>2.8GHz Xeon, 1GB RAM</dd></div>
-</dl>
-</section>
-<section aria-labelledby="info-video">
-<h2 id="info-video">The videos</h2>
-<dl>
-<div><dt>Resolution</dt><dd>1920 &times; 1080 (16:9, cropped from the 4:3 composition)</dd></div>
-<div><dt>Frame rate</dt><dd>30 frames a second</dd></div>
-<div><dt>Frames</dt><dd>1,026,433</dd></div>
-<div><dt>Video</dt><dd>H.264 (x264, preset slow, CRF 18)</dd></div>
-<div><dt>Full version</dt><dd>3.89 GB, 909 kbit/s on average</dd></div>
-<div><dt>Rendered</dt><dd>3 October 2026, in 3h 58m with 5 parallel jobs (19h 51m of rendering in all)</dd></div>
-<div><dt>Render speed</dt><dd>72 frames a second overall</dd></div>
-<div><dt>Rendered with</dt><dd>headless Chrome 154, ffmpeg 7.1.5, Node.js 24, on an AMD Ryzen 5 5500</dd></div>
-</dl>
-</section>
-</aside>
-<footer>
-<p><em>The Story of Art</em> by Emma Kay. Made with e-2. Browser version and videos made from the files shown at Tate Modern.</p>
-</footer>
-</div>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/00-introduction.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Introduction">
+                        <source src="https://media.bjorsq.net/soa/00-introduction.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n"></span> Introduction</h3>
+                        <p>From 0:00:00 &middot; 1m 30s &middot; 9 boxes &middot; 138 words</p>
+                        <p>10s a box &middot; 2,700 frames &middot; 7 MB &middot; rendered in 3m 09s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/01-the-story-of-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Story of Art">
+                        <source src="https://media.bjorsq.net/soa/01-the-story-of-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">1</span> The Story of Art</h3>
+                        <p>From 0:01:30 &middot; 6m 57s &middot; 7 boxes &middot; 136 words</p>
+                        <p>60s to 59s a box &middot; 12,496 frames &middot; 37 MB &middot; rendered in 14m 33s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/02-prehistoric-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Prehistoric Art">
+                        <source src="https://media.bjorsq.net/soa/02-prehistoric-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">2</span> Prehistoric Art</h3>
+                        <p>From 0:08:27 &middot; 12m 32s &middot; 13 boxes &middot; 227 words</p>
+                        <p>58.8s to 56.9s a box &middot; 22,559 frames &middot; 67 MB &middot; rendered in 26m 06s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/03-the-stone-age.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Stone Age">
+                        <source src="https://media.bjorsq.net/soa/03-the-stone-age.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">3</span> The Stone Age</h3>
+                        <p>From 0:20:59 &middot; 9m 19s &middot; 10 boxes &middot; 191 words</p>
+                        <p>56.7s to 55.2s a box &middot; 16,782 frames &middot; 54 MB &middot; rendered in 19m 26s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/04-the-iron-age.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Iron Age">
+                        <source src="https://media.bjorsq.net/soa/04-the-iron-age.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">4</span> The Iron Age</h3>
+                        <p>From 0:30:18 &middot; 6m 22s &middot; 7 boxes &middot; 105 words</p>
+                        <p>55s to 54s a box &middot; 11,451 frames &middot; 29 MB &middot; rendered in 13m 12s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/05-aboriginal-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Aboriginal Art">
+                        <source src="https://media.bjorsq.net/soa/05-aboriginal-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">5</span> Aboriginal Art</h3>
+                        <p>From 0:36:40 &middot; 7m 06s &middot; 8 boxes &middot; 120 words</p>
+                        <p>53.9s to 52.7s a box &middot; 12,789 frames &middot; 36 MB &middot; rendered in 14m 48s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/06-the-bronze-age.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Bronze Age">
+                        <source src="https://media.bjorsq.net/soa/06-the-bronze-age.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">6</span> The Bronze Age</h3>
+                        <p>From 0:43:46 &middot; 2m 37s &middot; 3 boxes &middot; 45 words</p>
+                        <p>52.5s to 52.2s a box &middot; 4,714 frames &middot; 12 MB &middot; rendered in 5m 27s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/07-early-civilisations.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Early Civilisations">
+                        <source src="https://media.bjorsq.net/soa/07-early-civilisations.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">7</span> Early Civilisations</h3>
+                        <p>From 0:46:23 &middot; 13m 33s &middot; 16 boxes &middot; 296 words</p>
+                        <p>52s to 49.6s a box &middot; 24,385 frames &middot; 81 MB &middot; rendered in 28m 23s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/08-tribal-art.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Tribal Art">
+                        <source src="https://media.bjorsq.net/soa/08-tribal-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">8</span> Tribal Art</h3>
+                        <p>From 0:59:56 &middot; 6m 31s &middot; 8 boxes &middot; 152 words</p>
+                        <p>49.4s to 48.2s a box &middot; 11,715 frames &middot; 38 MB &middot; rendered in 13m 41s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/09-empires.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Empires">
+                        <source src="https://media.bjorsq.net/soa/09-empires.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">9</span> Empires</h3>
+                        <p>From 1:06:26 &middot; 3m 59s &middot; 5 boxes &middot; 87 words</p>
+                        <p>48.1s to 47.4s a box &middot; 7,160 frames &middot; 22 MB &middot; rendered in 8m 17s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/10-art-and-religion.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Art and Religion">
+                        <source src="https://media.bjorsq.net/soa/10-art-and-religion.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">10</span> Art and Religion</h3>
+                        <p>From 1:10:25 &middot; 9m 16s &middot; 12 boxes &middot; 186 words</p>
+                        <p>47.2s to 45.4s a box &middot; 16,677 frames &middot; 46 MB &middot; rendered in 19m 09s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/11-early-written-text.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Early Written Text">
+                        <source src="https://media.bjorsq.net/soa/11-early-written-text.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">11</span> Early Written Text</h3>
+                        <p>From 1:19:41 &middot; 4m 29s &middot; 6 boxes &middot; 119 words</p>
+                        <p>45.3s to 44.4s a box &middot; 8,071 frames &middot; 26 MB &middot; rendered in 9m 24s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/12-egyptian-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Egyptian Art">
+                        <source src="https://media.bjorsq.net/soa/12-egyptian-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">12</span> Egyptian Art</h3>
+                        <p>From 1:24:10 &middot; 8m 40s &middot; 12 boxes &middot; 226 words</p>
+                        <p>44.3s to 42.4s a box &middot; 15,603 frames &middot; 51 MB &middot; rendered in 18m 07s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/13-etruscan-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Etruscan Art">
+                        <source src="https://media.bjorsq.net/soa/13-etruscan-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">13</span> Etruscan Art</h3>
+                        <p>From 1:32:50 &middot; 1m 24s &middot; 2 boxes &middot; 14 words</p>
+                        <p>42.3s to 42.1s a box &middot; 2,531 frames &middot; 4 MB &middot; rendered in 2m 56s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/14-byzantine-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Byzantine Art">
+                        <source src="https://media.bjorsq.net/soa/14-byzantine-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">14</span> Byzantine Art</h3>
+                        <p>From 1:34:14 &middot; 2m 05s &middot; 3 boxes &middot; 37 words</p>
+                        <p>41.9s to 41.6s a box &middot; 3,759 frames &middot; 9 MB &middot; rendered in 4m 22s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/15-greco-roman-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Greco Roman Art">
+                        <source src="https://media.bjorsq.net/soa/15-greco-roman-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">15</span> Greco Roman Art</h3>
+                        <p>From 1:36:20 &middot; 13m 17s &middot; 20 boxes &middot; 412 words</p>
+                        <p>41.4s to 38.3s a box &middot; 23,917 frames &middot; 84 MB &middot; rendered in 28m 03s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/16-islamic-art.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Islamic Art">
+                        <source src="https://media.bjorsq.net/soa/16-islamic-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">16</span> Islamic Art</h3>
+                        <p>From 1:49:37 &middot; 4m 23s &middot; 7 boxes &middot; 138 words</p>
+                        <p>38.1s to 37.1s a box &middot; 7,901 frames &middot; 27 MB &middot; rendered in 9m 14s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/17-chinese-art.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Chinese Art">
+                        <source src="https://media.bjorsq.net/soa/17-chinese-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">17</span> Chinese Art</h3>
+                        <p>From 1:54:00 &middot; 6m 37s &middot; 11 boxes &middot; 181 words</p>
+                        <p>37s to 35.3s a box &middot; 11,924 frames &middot; 37 MB &middot; rendered in 13m 51s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/18-japanese-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Japanese Art">
+                        <source src="https://media.bjorsq.net/soa/18-japanese-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">18</span> Japanese Art</h3>
+                        <p>From 2:00:38 &middot; 6m 51s &middot; 12 boxes &middot; 222 words</p>
+                        <p>35.1s to 33.3s a box &middot; 12,321 frames &middot; 41 MB &middot; rendered in 14m 21s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/19-christian-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Christian Art">
+                        <source src="https://media.bjorsq.net/soa/19-christian-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">19</span> Christian Art</h3>
+                        <p>From 2:07:29 &middot; 9m 31s &middot; 18 boxes &middot; 405 words</p>
+                        <p>33.1s to 30.3s a box &middot; 17,140 frames &middot; 63 MB &middot; rendered in 19m 59s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/20-medieval-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Medieval Art">
+                        <source src="https://media.bjorsq.net/soa/20-medieval-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">20</span> Medieval Art</h3>
+                        <p>From 2:17:00 &middot; 19m 02s &middot; 40 boxes &middot; 731 words</p>
+                        <p>30s to 27.1s a box &middot; 34,262 frames &middot; 113 MB &middot; rendered in 39m 35s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/21-the-renaissance.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Renaissance">
+                        <source src="https://media.bjorsq.net/soa/21-the-renaissance.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">21</span> The Renaissance</h3>
+                        <p>From 2:36:02 &middot; 6m 38s &middot; 15 boxes &middot; 296 words</p>
+                        <p>27s to 26s a box &middot; 11,930 frames &middot; 40 MB &middot; rendered in 13m 51s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/22-the-age-of-patronage.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Age of Patronage">
+                        <source src="https://media.bjorsq.net/soa/22-the-age-of-patronage.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">22</span> The Age of Patronage</h3>
+                        <p>From 2:42:40 &middot; 3m 51s &middot; 9 boxes &middot; 173 words</p>
+                        <p>25.9s to 25.3s a box &middot; 6,917 frames &middot; 23 MB &middot; rendered in 8m 03s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/23-perspective.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Perspective">
+                        <source src="https://media.bjorsq.net/soa/23-perspective.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">23</span> Perspective</h3>
+                        <p>From 2:46:30 &middot; 41m 23s &middot; 119 boxes &middot; 2,095 words</p>
+                        <p>25.3s to 16.5s a box &middot; 74,493 frames &middot; 241 MB &middot; rendered in 1h 25m</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/24-classical-realism.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Classical Realism">
+                        <source src="https://media.bjorsq.net/soa/24-classical-realism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">24</span> Classical Realism</h3>
+                        <p>From 3:27:53 &middot; 4m 44s &middot; 18 boxes &middot; 397 words</p>
+                        <p>16.4s to 15.2s a box &middot; 8,521 frames &middot; 35 MB &middot; rendered in 9m 58s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/25-realism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Realism">
+                        <source src="https://media.bjorsq.net/soa/25-realism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">25</span> Realism</h3>
+                        <p>From 3:32:37 &middot; 5m 10s &middot; 21 boxes &middot; 448 words</p>
+                        <p>15s to 14.5s a box &middot; 9,289 frames &middot; 38 MB &middot; rendered in 10m 51s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/26-the-still-life.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Still Life">
+                        <source src="https://media.bjorsq.net/soa/26-the-still-life.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">26</span> The Still Life</h3>
+                        <p>From 3:37:47 &middot; 12m 51s &middot; 56 boxes &middot; 1,096 words</p>
+                        <p>14.5s to 13.1s a box &middot; 23,129 frames &middot; 91 MB &middot; rendered in 26m 46s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/27-dutch-painting.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Dutch Painting">
+                        <source src="https://media.bjorsq.net/soa/27-dutch-painting.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">27</span> Dutch Painting</h3>
+                        <p>From 3:50:38 &middot; 8m 22s &middot; 40 boxes &middot; 804 words</p>
+                        <p>13s to 12.1s a box &middot; 15,056 frames &middot; 57 MB &middot; rendered in 17m 35s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/28-history-painting.png"
+                        width="1920" height="1080" aria-label="The Story of Art: History Painting">
+                        <source src="https://media.bjorsq.net/soa/28-history-painting.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">28</span> History Painting</h3>
+                        <p>From 3:59:00 &middot; 15m 13s &middot; 79 boxes &middot; 1,352 words</p>
+                        <p>12s to 11.1s a box &middot; 27,390 frames &middot; 93 MB &middot; rendered in 31m 24s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/29-the-sublime.png" width="1920"
+                        height="1080" aria-label="The Story of Art: The Sublime">
+                        <source src="https://media.bjorsq.net/soa/29-the-sublime.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">29</span> The Sublime</h3>
+                        <p>From 4:14:13 &middot; 8m 40s &middot; 48 boxes &middot; 852 words</p>
+                        <p>11.1s to 10.6s a box &middot; 15,603 frames &middot; 53 MB &middot; rendered in 17m 57s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/30-the-pre-raphaelites.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Pre Raphaelites">
+                        <source src="https://media.bjorsq.net/soa/30-the-pre-raphaelites.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">30</span> The Pre Raphaelites</h3>
+                        <p>From 4:22:53 &middot; 6m 43s &middot; 39 boxes &middot; 655 words</p>
+                        <p>10.6s to 10.1s a box &middot; 12,100 frames &middot; 40 MB &middot; rendered in 13m 56s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/31-orientalism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Orientalism">
+                        <source src="https://media.bjorsq.net/soa/31-orientalism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">31</span> Orientalism</h3>
+                        <p>From 4:29:36 &middot; 4m 00s &middot; 24 boxes &middot; 409 words</p>
+                        <p>10.1s to 9.9s a box &middot; 7,187 frames &middot; 25 MB &middot; rendered in 8m 17s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/32-realism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Realism">
+                        <source src="https://media.bjorsq.net/soa/32-realism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">32</span> Realism</h3>
+                        <p>From 4:33:36 &middot; 4m 50s &middot; 30 boxes &middot; 458 words</p>
+                        <p>9.8s to 9.5s a box &middot; 8,709 frames &middot; 25 MB &middot; rendered in 9m 58s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none"
+                        poster="https://media.bjorsq.net/soa/33-the-invention-of-photography.png" width="1920"
+                        height="1080" aria-label="The Story of Art: The Invention of Photography">
+                        <source src="https://media.bjorsq.net/soa/33-the-invention-of-photography.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">33</span> The Invention of Photography</h3>
+                        <p>From 4:38:26 &middot; 10m 11s &middot; 67 boxes &middot; 1,340 words</p>
+                        <p>9.5s to 8.8s a box &middot; 18,341 frames &middot; 68 MB &middot; rendered in 21m 17s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/34-impressionism.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Impressionism">
+                        <source src="https://media.bjorsq.net/soa/34-impressionism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">34</span> Impressionism</h3>
+                        <p>From 4:48:37 &middot; 5m 57s &middot; 42 boxes &middot; 848 words</p>
+                        <p>8.7s to 8.3s a box &middot; 10,718 frames &middot; 42 MB &middot; rendered in 12m 29s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/35-symbolism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Symbolism">
+                        <source src="https://media.bjorsq.net/soa/35-symbolism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">35</span> Symbolism</h3>
+                        <p>From 4:54:35 &middot; 8m 11s &middot; 62 boxes &middot; 1,097 words</p>
+                        <p>8.3s to 7.6s a box &middot; 14,722 frames &middot; 50 MB &middot; rendered in 17m 04s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/36-fauvism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Fauvism">
+                        <source src="https://media.bjorsq.net/soa/36-fauvism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">36</span> Fauvism</h3>
+                        <p>From 5:02:45 &middot; 30s &middot; 4 boxes &middot; 70 words</p>
+                        <p>7.6s to 7.5s a box &middot; 905 frames &middot; 3 MB &middot; rendered in 1m 05s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/37-cubism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Cubism">
+                        <source src="https://media.bjorsq.net/soa/37-cubism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">37</span> Cubism</h3>
+                        <p>From 5:03:16 &middot; 10m 54s &middot; 89 boxes &middot; 1,922 words</p>
+                        <p>7.5s to 7.2s a box &middot; 19,629 frames &middot; 81 MB &middot; rendered in 22m 55s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none"
+                        poster="https://media.bjorsq.net/soa/38-early-twentieth-century-sculpture.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Early Twentieth Century Sculpture">
+                        <source src="https://media.bjorsq.net/soa/38-early-twentieth-century-sculpture.mp4"
+                            type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">38</span> Early Twentieth Century Sculpture</h3>
+                        <p>From 5:14:10 &middot; 5m 49s &middot; 49 boxes &middot; 1,039 words</p>
+                        <p>7.2s to 7s a box &middot; 10,464 frames &middot; 42 MB &middot; rendered in 12m 15s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/39-surrealism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Surrealism">
+                        <source src="https://media.bjorsq.net/soa/39-surrealism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">39</span> Surrealism</h3>
+                        <p>From 5:19:59 &middot; 4m 53s &middot; 42 boxes &middot; 881 words</p>
+                        <p>7s to 6.9s a box &middot; 8,778 frames &middot; 36 MB &middot; rendered in 10m 14s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/40-dada.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Dada">
+                        <source src="https://media.bjorsq.net/soa/40-dada.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">40</span> Dada</h3>
+                        <p>From 5:24:51 &middot; 7m 01s &middot; 62 boxes &middot; 1,256 words</p>
+                        <p>6.9s to 6.7s a box &middot; 12,629 frames &middot; 51 MB &middot; rendered in 14m 43s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/41-futurism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Futurism">
+                        <source src="https://media.bjorsq.net/soa/41-futurism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">41</span> Futurism</h3>
+                        <p>From 5:31:52 &middot; 4m 18s &middot; 39 boxes &middot; 631 words</p>
+                        <p>6.7s to 6.6s a box &middot; 7,746 frames &middot; 27 MB &middot; rendered in 8m 57s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/42-early-photography.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Early Photography">
+                        <source src="https://media.bjorsq.net/soa/42-early-photography.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">42</span> Early Photography</h3>
+                        <p>From 5:36:10 &middot; 1m 57s &middot; 18 boxes &middot; 307 words</p>
+                        <p>6.6s to 6.5s a box &middot; 3,523 frames &middot; 13 MB &middot; rendered in 4m 09s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/43-the-moving-image.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Moving Image">
+                        <source src="https://media.bjorsq.net/soa/43-the-moving-image.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">43</span> The Moving Image</h3>
+                        <p>From 5:38:08 &middot; 1m 37s &middot; 15 boxes &middot; 242 words</p>
+                        <p>6.5s to 6.4s a box &middot; 2,910 frames &middot; 10 MB &middot; rendered in 3m 26s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/44-the-bauhaus.png" width="1920"
+                        height="1080" aria-label="The Story of Art: The Bauhaus">
+                        <source src="https://media.bjorsq.net/soa/44-the-bauhaus.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">44</span> The Bauhaus</h3>
+                        <p>From 5:39:45 &middot; 1m 43s &middot; 16 boxes &middot; 294 words</p>
+                        <p>6.4s to 6.4s a box &middot; 3,081 frames &middot; 12 MB &middot; rendered in 3m 39s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/45-constructivism.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Constructivism">
+                        <source src="https://media.bjorsq.net/soa/45-constructivism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">45</span> Constructivism</h3>
+                        <p>From 5:41:28 &middot; 57s &middot; 9 boxes &middot; 142 words</p>
+                        <p>6.4s to 6.4s a box &middot; 1,720 frames &middot; 6 MB &middot; rendered in 2m 03s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/46-suprematism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Suprematism">
+                        <source src="https://media.bjorsq.net/soa/46-suprematism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">46</span> Suprematism</h3>
+                        <p>From 5:42:25 &middot; 1m 54s &middot; 18 boxes &middot; 268 words</p>
+                        <p>6.4s to 6.3s a box &middot; 3,419 frames &middot; 11 MB &middot; rendered in 4m 00s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/47-german-expressionism.png"
+                        width="1920" height="1080" aria-label="The Story of Art: German Expressionism">
+                        <source src="https://media.bjorsq.net/soa/47-german-expressionism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">47</span> German Expressionism</h3>
+                        <p>From 5:44:19 &middot; 8m 55s &middot; 87 boxes &middot; 1,389 words</p>
+                        <p>6.3s to 6s a box &middot; 16,056 frames &middot; 54 MB &middot; rendered in 18m 35s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/48-the-st-ives-group.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The St Ives Group">
+                        <source src="https://media.bjorsq.net/soa/48-the-st-ives-group.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">48</span> The St Ives Group</h3>
+                        <p>From 5:53:14 &middot; 3m 35s &middot; 36 boxes &middot; 687 words</p>
+                        <p>6s to 5.9s a box &middot; 6,444 frames &middot; 24 MB &middot; rendered in 7m 34s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/49-the-cobra-group.png"
+                        width="1920" height="1080" aria-label="The Story of Art: The Cobra Group">
+                        <source src="https://media.bjorsq.net/soa/49-the-cobra-group.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">49</span> The Cobra Group</h3>
+                        <p>From 5:56:49 &middot; 30s &middot; 5 boxes &middot; 49 words</p>
+                        <p>5.9s a box &middot; 888 frames &middot; 2 MB &middot; rendered in 1m 01s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/50-abstraction.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Abstraction">
+                        <source src="https://media.bjorsq.net/soa/50-abstraction.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">50</span> Abstraction</h3>
+                        <p>From 5:57:18 &middot; 8m 10s &middot; 84 boxes &middot; 1,360 words</p>
+                        <p>5.9s to 5.8s a box &middot; 14,710 frames &middot; 50 MB &middot; rendered in 17m 00s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/51-abstract-expressionism.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Abstract Expressionism">
+                        <source src="https://media.bjorsq.net/soa/51-abstract-expressionism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">51</span> Abstract Expressionism</h3>
+                        <p>From 6:05:29 &middot; 4m 23s &middot; 46 boxes &middot; 778 words</p>
+                        <p>5.8s to 5.7s a box &middot; 7,880 frames &middot; 28 MB &middot; rendered in 9m 14s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/52-minimalism.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Minimalism">
+                        <source src="https://media.bjorsq.net/soa/52-minimalism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">52</span> Minimalism</h3>
+                        <p>From 6:09:51 &middot; 4m 35s &middot; 49 boxes &middot; 900 words</p>
+                        <p>5.7s to 5.6s a box &middot; 8,257 frames &middot; 31 MB &middot; rendered in 9m 34s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/53-towards-pop-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Towards Pop Art">
+                        <source src="https://media.bjorsq.net/soa/53-towards-pop-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">53</span> Towards Pop Art</h3>
+                        <p>From 6:14:27 &middot; 3m 58s &middot; 43 boxes &middot; 846 words</p>
+                        <p>5.6s to 5.5s a box &middot; 7,128 frames &middot; 29 MB &middot; rendered in 8m 18s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/54-pop-art.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Pop Art">
+                        <source src="https://media.bjorsq.net/soa/54-pop-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">54</span> Pop Art</h3>
+                        <p>From 6:18:24 &middot; 13m 15s &middot; 149 boxes &middot; 2,971 words</p>
+                        <p>5.5s to 5.2s a box &middot; 23,858 frames &middot; 96 MB &middot; rendered in 27m 44s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/55-conceptual-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Conceptual Art">
+                        <source src="https://media.bjorsq.net/soa/55-conceptual-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">55</span> Conceptual Art</h3>
+                        <p>From 6:31:40 &middot; 6m 39s &middot; 78 boxes &middot; 1,676 words</p>
+                        <p>5.2s to 5s a box &middot; 11,967 frames &middot; 50 MB &middot; rendered in 13m 56s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/56-art-and-politics.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Art and Politics">
+                        <source src="https://media.bjorsq.net/soa/56-art-and-politics.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">56</span> Art and Politics</h3>
+                        <p>From 6:38:18 &middot; 1m 25s &middot; 17 boxes &middot; 333 words</p>
+                        <p>5s to 5s a box &middot; 2,560 frames &middot; 11 MB &middot; rendered in 3m 02s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none"
+                        poster="https://media.bjorsq.net/soa/57-the-situationist-international.png" width="1920"
+                        height="1080" aria-label="The Story of Art: The Situationist International">
+                        <source src="https://media.bjorsq.net/soa/57-the-situationist-international.mp4"
+                            type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">57</span> The Situationist International</h3>
+                        <p>From 6:39:44 &middot; 50s &middot; 10 boxes &middot; 215 words</p>
+                        <p>5s to 5s a box &middot; 1,499 frames &middot; 7 MB &middot; rendered in 1m 48s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/58-performance-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Performance Art">
+                        <source src="https://media.bjorsq.net/soa/58-performance-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">58</span> Performance Art</h3>
+                        <p>From 6:40:34 &middot; 12m 06s &middot; 150 boxes &middot; 3,040 words</p>
+                        <p>5s to 4.7s a box &middot; 21,765 frames &middot; 89 MB &middot; rendered in 25m 15s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/59-experimental-film.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Experimental Film">
+                        <source src="https://media.bjorsq.net/soa/59-experimental-film.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">59</span> Experimental Film</h3>
+                        <p>From 6:52:39 &middot; 23s &middot; 5 boxes &middot; 55 words</p>
+                        <p>4.7s a box &middot; 702 frames &middot; 2 MB &middot; rendered in 48s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/60-land-art.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Land Art">
+                        <source src="https://media.bjorsq.net/soa/60-land-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">60</span> Land Art</h3>
+                        <p>From 6:53:03 &middot; 2m 01s &middot; 26 boxes &middot; 502 words</p>
+                        <p>4.7s to 4.6s a box &middot; 3,631 frames &middot; 14 MB &middot; rendered in 4m 16s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/61-site-specific-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Site Specific Art">
+                        <source src="https://media.bjorsq.net/soa/61-site-specific-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">61</span> Site Specific Art</h3>
+                        <p>From 6:55:04 &middot; 1m 41s &middot; 22 boxes &middot; 399 words</p>
+                        <p>4.6s to 4.6s a box &middot; 3,039 frames &middot; 12 MB &middot; rendered in 3m 36s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/62-figurative-painting.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Figurative Painting">
+                        <source src="https://media.bjorsq.net/soa/62-figurative-painting.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">62</span> Figurative Painting</h3>
+                        <p>From 6:56:45 &middot; 9m 22s &middot; 126 boxes &middot; 2,274 words</p>
+                        <p>4.6s to 4.3s a box &middot; 16,864 frames &middot; 65 MB &middot; rendered in 19m 29s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none"
+                        poster="https://media.bjorsq.net/soa/63-early-twentieth-century-sculpture.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Early Twentieth Century Sculpture">
+                        <source src="https://media.bjorsq.net/soa/63-early-twentieth-century-sculpture.mp4"
+                            type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">63</span> Early Twentieth Century Sculpture</h3>
+                        <p>From 7:06:07 &middot; 11m 49s &middot; 170 boxes &middot; 3,181 words</p>
+                        <p>4.3s to 4s a box &middot; 21,268 frames &middot; 86 MB &middot; rendered in 24m 42s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/64-postmodernism.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Postmodernism">
+                        <source src="https://media.bjorsq.net/soa/64-postmodernism.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">64</span> Postmodernism</h3>
+                        <p>From 7:17:56 &middot; 52s &middot; 13 boxes &middot; 263 words</p>
+                        <p>4s to 4s a box &middot; 1,558 frames &middot; 7 MB &middot; rendered in 1m 53s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/65-activist-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Activist Art">
+                        <source src="https://media.bjorsq.net/soa/65-activist-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">65</span> Activist Art</h3>
+                        <p>From 7:18:48 &middot; 52s &middot; 13 boxes &middot; 292 words</p>
+                        <p>4s a box &middot; 1,553 frames &middot; 8 MB &middot; rendered in 1m 53s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/66-photography.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Photography">
+                        <source src="https://media.bjorsq.net/soa/66-photography.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">66</span> Photography</h3>
+                        <p>From 7:19:40 &middot; 5m 54s &middot; 90 boxes &middot; 1,750 words</p>
+                        <p>4s to 3.9s a box &middot; 10,612 frames &middot; 46 MB &middot; rendered in 12m 25s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/67-performance.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Performance">
+                        <source src="https://media.bjorsq.net/soa/67-performance.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">67</span> Performance</h3>
+                        <p>From 7:25:34 &middot; 6m 31s &middot; 102 boxes &middot; 2,013 words</p>
+                        <p>3.9s to 3.8s a box &middot; 11,738 frames &middot; 52 MB &middot; rendered in 13m 42s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/68-installation-art.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Installation Art">
+                        <source src="https://media.bjorsq.net/soa/68-installation-art.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">68</span> Installation Art</h3>
+                        <p>From 7:32:05 &middot; 9m 35s &middot; 155 boxes &middot; 2,937 words</p>
+                        <p>3.8s to 3.6s a box &middot; 17,249 frames &middot; 74 MB &middot; rendered in 20m 10s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/69-film-and-video.png"
+                        width="1920" height="1080" aria-label="The Story of Art: Film and Video">
+                        <source src="https://media.bjorsq.net/soa/69-film-and-video.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">69</span> Film and Video</h3>
+                        <p>From 7:41:40 &middot; 2m 14s &middot; 37 boxes &middot; 735 words</p>
+                        <p>3.6s to 3.6s a box &middot; 4,012 frames &middot; 17 MB &middot; rendered in 4m 42s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/70-sculpture.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Sculpture">
+                        <source src="https://media.bjorsq.net/soa/70-sculpture.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">70</span> Sculpture</h3>
+                        <p>From 7:43:53 &middot; 11m 16s &middot; 193 boxes &middot; 3,795 words</p>
+                        <p>3.6s to 3.4s a box &middot; 20,274 frames &middot; 92 MB &middot; rendered in 23m 40s</p>
+                    </figcaption>
+                </figure>
+                <figure class="video">
+                    <video controls preload="none" poster="https://media.bjorsq.net/soa/71-painting.png" width="1920"
+                        height="1080" aria-label="The Story of Art: Painting">
+                        <source src="https://media.bjorsq.net/soa/71-painting.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>
+                        <h3><span class="n">71</span> Painting</h3>
+                        <p>From 7:55:09 &middot; 1h 35m &middot; 2,847 boxes &middot; 52,832 words</p>
+                        <p>3.4s to 0.60s a box &middot; 171,155 frames &middot; 847 MB &middot; rendered in 3h 18m</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </main>
+        <aside aria-label="About the piece and the videos">
+
+            <section aria-labelledby="info-piece">
+                <h2 id="info-piece">The piece</h2>
+                <dl>
+                    <div>
+                        <dt>Running time</dt>
+                        <dd>9h 30m (9:30:14), looped</dd>
+                    </div>
+                    <div>
+                        <dt>Text boxes</dt>
+                        <dd>5,812</dd>
+                    </div>
+                    <div>
+                        <dt>Sections</dt>
+                        <dd>71, plus an introduction</dd>
+                    </div>
+                    <div>
+                        <dt>Words</dt>
+                        <dd>108,812</dd>
+                    </div>
+                    <div>
+                        <dt>Characters</dt>
+                        <dd>637,549</dd>
+                    </div>
+                    <div>
+                        <dt>Lines of text</dt>
+                        <dd>11,326</dd>
+                    </div>
+                    <div>
+                        <dt>Letters drawn</dt>
+                        <dd>534,549</dd>
+                    </div>
+                    <div>
+                        <dt>Longest box</dt>
+                        <dd>104 words, 9 lines</dd>
+                    </div>
+                    <div>
+                        <dt>Halfway through the text</dt>
+                        <dd>at 7:50:54: half the words come in the last 17% of the running time</dd>
+                    </div>
+                </dl>
+            </section>
+            <section aria-labelledby="info-speed">
+                <h2 id="info-speed">Speed</h2>
+                <dl>
+                    <div>
+                        <dt>First box</dt>
+                        <dd>5s in, 5s out (6 a minute)</dd>
+                    </div>
+                    <div>
+                        <dt>Slowest box</dt>
+                        <dd>5s in, 55s out (&ldquo;The Story of Art&rdquo;)</dd>
+                    </div>
+                    <div>
+                        <dt>Last box</dt>
+                        <dd>0.30s in, 0.30s out (100 a minute)</dd>
+                    </div>
+                    <div>
+                        <dt>Zoom in</dt>
+                        <dd>font size 0 to 1em, moving 50px down to rest</dd>
+                    </div>
+                    <div>
+                        <dt>Zoom out</dt>
+                        <dd>font size 1em to 20em, moving 950px down; section headings move 1300px up</dd>
+                    </div>
+                    <div>
+                        <dt>Easing</dt>
+                        <dd>SMIL <code>keySplines</code>, two presets: one for text, one for headings</dd>
+                    </div>
+                    <div>
+                        <dt>Font</dt>
+                        <dd>"pm", Arial converted to an SVG font; 83 of its 237 glyphs are used</dd>
+                    </div>
+                    <div>
+                        <dt>Text sizes</dt>
+                        <dd>1.1, 1.2 and 1.3em (13.2 to 15.6px at rest), justified to 420px &times; size</dd>
+                    </div>
+                </dl>
+            </section>
+            <section aria-labelledby="info-original">
+                <h2 id="info-original">The original</h2>
+                <dl>
+                    <div>
+                        <dt>Shown at</dt>
+                        <dd>Tate Modern, London, where it looped for 11 months, then the Power Plant, Toronto</dd>
+                    </div>
+                    <div>
+                        <dt>Projection</dt>
+                        <dd>25&prime; &times; 15&prime;, from a 1024 &times; 768 composition</dd>
+                    </div>
+                    <div>
+                        <dt>Format</dt>
+                        <dd>SVG with SMIL animation and ECMAScript, in Adobe SVG Viewer 3</dd>
+                    </div>
+                    <div>
+                        <dt>Files</dt>
+                        <dd>8 SVG files and a script, 8.3 MB; each file loaded the next</dd>
+                    </div>
+                    <div>
+                        <dt>Made with</dt>
+                        <dd>a PHP and MySQL tool which turned the artist&rsquo;s text into SVG</dd>
+                    </div>
+                    <div>
+                        <dt>Computer</dt>
+                        <dd>2.8GHz Xeon, 1GB RAM</dd>
+                    </div>
+                </dl>
+            </section>
+            <section aria-labelledby="info-video">
+                <h2 id="info-video">The videos</h2>
+                <dl>
+                    <div>
+                        <dt>Resolution</dt>
+                        <dd>1920 &times; 1080 (16:9, cropped from the 4:3 composition)</dd>
+                    </div>
+                    <div>
+                        <dt>Frame rate</dt>
+                        <dd>30 frames a second</dd>
+                    </div>
+                    <div>
+                        <dt>Frames</dt>
+                        <dd>1,026,433</dd>
+                    </div>
+                    <div>
+                        <dt>Video</dt>
+                        <dd>H.264 (x264, preset slow, CRF 18)</dd>
+                    </div>
+                    <div>
+                        <dt>Full version</dt>
+                        <dd>3.89 GB, 909 kbit/s on average</dd>
+                    </div>
+                    <div>
+                        <dt>Rendered</dt>
+                        <dd>3 October 2026, in 3h 58m with 5 parallel jobs (19h 51m of rendering in all)</dd>
+                    </div>
+                    <div>
+                        <dt>Render speed</dt>
+                        <dd>72 frames a second overall</dd>
+                    </div>
+                    <div>
+                        <dt>Rendered with</dt>
+                        <dd>headless Chrome 154, ffmpeg 7.1.5, Node.js 24, on an AMD Ryzen 5 5500</dd>
+                    </div>
+                </dl>
+            </section>
+        </aside>
+        <footer>
+            <p><em>The Story of Art</em> by Emma Kay. Made with e-2. Browser version and videos made from the files
+                shown at Tate Modern.</p>
+        </footer>
+    </div>
 </body>
+
 </html>
