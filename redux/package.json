@@ -1,0 +1,13 @@
+{
+  "name": "story-of-art-redux",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Story of Art by Emma Kay, redeveloped for modern browsers and video",
+  "scripts": {
+    "timeline": "node scripts/extract-timeline.js",
+    "capture": "node scripts/capture.js"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.0.0"
+  }
+}
