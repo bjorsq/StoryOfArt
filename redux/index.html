@@ -35,8 +35,8 @@
         body.capture #debug {
             display: none;
         }
-        /* fullscreen button: shown when the mouse moves, hidden again (with the pointer) after a few seconds */
-        .fullscreen-btn {
+        /* fullscreen and screenshot buttons: shown when the mouse moves, hidden again (with the pointer) after a few seconds */
+        .control-btn {
             position: fixed;
             z-index: 1;
             top: 10px;
@@ -53,20 +53,44 @@
         body.idle {
             cursor: none;
         }
-        body.idle .fullscreen-btn:not(:focus-visible) {
+        .screenshot-btn {
+            top: 52px;
+        }
+        body.idle .control-btn:not(:focus-visible) {
             opacity: 0;
             pointer-events: none;
         }
-        body.capture .fullscreen-btn {
+        body.capture .control-btn {
             display: none;
         }
-        .fullscreen-btn svg {
+        .control-btn svg {
             display: block;
         }
-        .fullscreen-btn path {
+        .control-btn path,
+        .control-btn circle {
             fill: none;
             stroke: hsl(225, 10%, 8%);
             stroke-width: 4;
+        }
+        .screenshot-btn path,
+        .screenshot-btn circle {
+            stroke-width: 2.5;
+            stroke-linejoin: round;
+        }
+        /* the camera flash */
+        @keyframes flash {
+            from { opacity: 0.9; }
+            to { opacity: 0; }
+        }
+        #flash {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #flash.flash {
+            animation: flash 0.4s ease-out;
         }
         .fullscreen-btn:not(.on) .icon-leave,
         .fullscreen-btn.on .icon-enter {
@@ -85,12 +109,19 @@
         </g>
     </svg>
     <div id="debug" hidden></div>
-    <button class="fullscreen-btn" aria-label="Enter fullscreen" hidden>
+    <button class="control-btn fullscreen-btn" aria-label="Enter fullscreen" hidden>
         <svg width="28" height="28" viewBox="-2 -2 28 28" aria-hidden="true">
             <g class="icon-enter"><path d="M 2 9 v -7 h 7"/><path d="M 22 9 v -7 h -7"/><path d="M 22 15 v 7 h -7"/><path d="M 2 15 v 7 h 7"/></g>
             <g class="icon-leave"><path d="M 24 17 h -7 v 7"/><path d="M 0 17 h 7 v 7"/><path d="M 0 7 h 7 v -7"/><path d="M 24 7 h -7 v -7"/></g>
         </svg>
     </button>
+    <button class="control-btn screenshot-btn" aria-label="Take a screenshot" title="Take a screenshot">
+        <svg width="28" height="28" viewBox="-2 -2 28 28" aria-hidden="true">
+            <path d="M 2 7 h 5 l 2 -3 h 6 l 2 3 h 5 v 13 h -20 z"/>
+            <circle cx="12" cy="13" r="4"/>
+        </svg>
+    </button>
+    <div id="flash" aria-hidden="true"></div>
     <script src="player.js"></script>
     <script>
     /**
@@ -100,7 +131,8 @@
      *   ?aspect=5:3  mask the top and bottom, as the projection was at the Tate
      *   ?capture     don't play - scripts/capture.js renders frames with player.renderAt()
      * While playing: space pauses, left/right skip 10 seconds (60 with shift),
-     * f toggles fullscreen (as does the button which appears when the mouse moves)
+     * f toggles fullscreen (as does the button which appears when the mouse
+     * moves), and the camera button under it saves a screenshot
      */
     function parseTime(str) {
         if (!str) return 0;
@@ -144,6 +176,74 @@
                 fullscreenBtn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
             });
         }
+        /**
+         * Screenshots: the projection is one SVG, with the letters drawn as paths, so it's
+         * drawn onto a canvas at twice the composition's resolution and saved as a PNG
+         * named after the moment in the piece, with a shutter sound and a flash
+         */
+        const flashEl = document.getElementById('flash');
+        let audio;
+        function shutter() {
+            try {
+                audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+                const noise = audio.createBuffer(1, audio.sampleRate * 0.1, audio.sampleRate);
+                const data = noise.getChannelData(0);
+                for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+                [[0, 2500, 0.9], [0.09, 1800, 0.6]].forEach(([at, freq, level]) => {
+                    const t = audio.currentTime + at;
+                    const source = audio.createBufferSource();
+                    source.buffer = noise;
+                    const filter = audio.createBiquadFilter();
+                    filter.type = 'bandpass';
+                    filter.frequency.value = freq;
+                    filter.Q.value = 0.8;
+                    const gain = audio.createGain();
+                    gain.gain.setValueAtTime(level, t);
+                    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
+                    source.connect(filter).connect(gain).connect(audio.destination);
+                    source.start(t);
+                    source.stop(t + 0.08);
+                });
+            } catch (e) {}
+        }
+        function screenshot() {
+            const t = now() % player.duration;
+            shutter();
+            flashEl.classList.remove('flash');
+            void flashEl.offsetWidth;
+            flashEl.classList.add('flash');
+            const svg = document.getElementById('projection');
+            const box = svg.viewBox.baseVal;
+            const width = box.width * 2;
+            const height = Math.round(box.height * 2);
+            const clone = svg.cloneNode(true);
+            clone.setAttribute('width', width);
+            clone.setAttribute('height', height);
+            /* the colours come from the page's stylesheet, which the image won't have */
+            clone.querySelector('#screen').setAttribute('fill', '#fff');
+            clone.querySelector('#stage').setAttribute('fill', '#000');
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, width, height);
+                ctx.drawImage(img, 0, 0, width, height);
+                canvas.toBlob(blob => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    const s = Math.floor(t / 1000);
+                    link.download = 'story-of-art-' + String(Math.floor(s / 3600)).padStart(2, '0') + 'h' + String(Math.floor(s / 60) % 60).padStart(2, '0') + 'm' + String(s % 60).padStart(2, '0') + 's.png';
+                    link.click();
+                    setTimeout(() => URL.revokeObjectURL(link.href), 10000);
+                }, 'image/png');
+            };
+            img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(clone));
+        }
+        document.querySelector('.screenshot-btn').addEventListener('click', screenshot);
+
         let idleTimer;
         const wake = () => {
             document.body.classList.remove('idle');

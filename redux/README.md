@@ -29,7 +29,9 @@ Serve this folder (e.g. `npx http-server .`) and open `index.html`.
 * `?t=2h15m` starts at that point (or plain seconds)
 * `?debug` shows the time
 * space pauses, left and right arrows skip 10 seconds (60 with shift)
-* f, or the button at the top right, toggles fullscreen. The button and the mouse pointer appear when the mouse moves, and hide again after 3 seconds
+* f, or the button at the top right, toggles fullscreen
+* the camera button under it saves a screenshot, with a shutter sound and a flash: a PNG at twice the composition's resolution (2048x1536, or the shape set by `?aspect`), named after the moment in the piece, e.g. `story-of-art-02h46m35s.png`
+* the buttons and the mouse pointer appear when the mouse moves, and hide again after 3 seconds
 
 The piece loops, as it did at the Tate.
 
